@@ -1,0 +1,52 @@
+@import 'universal/nojs',
+'universal/mixins',
+'universal/base',
+'universal/typography',
+'en/enform';
+// main
+.main {
+    position: relative;
+}
+
+.main-inner {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    >section {
+        width: 100%;
+    }
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+}
+
+.section {
+    padding: 0;
+    margin: 0;
+}
+
+section.content {
+    width: 100%;
+    max-width: 1280px;
+}
+
+section.enform {
+    flex-basis: 400px;
+    flex-shrink: 0;
+    background-color: #ddd;
+    .enform__header {
+        margin-bottom: 8px;
+        h2 {
+            display: flex;
+            justify-content: space-around;
+            font-size: 32px;
+            color: #0bb5ff;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+        }
+        p {
+            text-align: center;
+        }
+    }
+}

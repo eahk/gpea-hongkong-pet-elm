@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-//
+// vue plugins
 import VueYoutube from 'vue-youtube'
 Vue.use(VueYoutube)
 import Transitions from 'vue2-transitions'
@@ -14,18 +14,20 @@ Vue.use(VueScrollTo, {
     duration: 400,
     easing: 'easeOutQuint',
 });
-//
+// plugins
 import NProgress from "nprogress";
 import 'nprogress/nprogress.css'
-//
-import 'swiper/dist/css/swiper.css'
 import 'normalize.css/normalize.css'
-import 'nprogress/nprogress.css'
+import "sanitize.css";
+import "animate.css";
+import 'swiper/dist/css/swiper.css'
+// materialize
+import 'materialize-css/sass/materialize.scss'
 import M from 'materialize-css'
+// main css
+import '@/styles/scss/main.scss'
 //
 Vue.config.productionTip = false
-    //
-    //
 new Vue({
     router,
     store,
@@ -35,7 +37,6 @@ new Vue({
     mounted() {
         M.AutoInit()
         this.$nextTick(() => {
-            // The whole view is rendered, so I can safely access or query the DOM
             NProgress.done()
         })
     },

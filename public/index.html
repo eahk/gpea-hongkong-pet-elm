@@ -1,17 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="zh" class="no-js">
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>vue-elm</title>
-  </head>
-  <body>
+    <style>
+        .no-js *,
+        .no-js-warning,
+        .not-supported-browser *,
+        .browser-warning {
+            display: none !important;
+        }
+        
+        .no-js body {
+            display: block !important;
+            width: auto;
+            min-width: 0;
+            height: auto;
+            margin: 20px;
+            font-size: 14px;
+        }
+        
+        .no-js .no-js-warning,
+        .no-js .no-js-warning * {
+            display: block !important;
+        }
+        
+        .no-js-warning__logo {
+            width: 250px;
+            height: auto;
+        }
+        
+        .not-supported-browser body {
+            display: block !important;
+            width: auto;
+            min-width: 0;
+            height: auto;
+            margin: 20px;
+            font-size: 14px;
+        }
+        
+        .not-supported-browser .browser-warning,
+        .not-supported-browser .browser-warning * {
+            display: block !important;
+        }
+        
+        .browser-warning__logo {
+            width: 250px;
+            height: auto;
+        }
+        
+        .browser-warning ul {
+            padding-left: 1.5em;
+        }
+        
+        .not-supported-browser .browser-warning ul li {
+            line-height: 1.2em;
+            display: list-item !important;
+            margin-bottom: 2px;
+            list-style-position: outside;
+            list-style-type: disc;
+        }
+    </style>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,700,900&amp;subset=chinese-traditional" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+</head>
+
+<body>
+    <h1 style="display: none; visibility: hidden;">守護大嶼 | 綠色和平</h1>
     <noscript>
-      <strong>We're sorry but vue-elm doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
+    <strong>We're sorry but the page doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+    <div class=no-js-warning><img class=no-js-warning__logo src=https://secured-static.greenpeace.org/hk/Global/hk/code/donate/img/common/gp-logo.png>
+        <p>請啟用瀏覽器的JavaScript功能，以便正確顯示此頁面。啟用後，請重新載入頁面。</p>
+    </div>
+    <div class=browser-warning><img class=browser-warning__logo src=https://secured-static.greenpeace.org/hk/Global/hk/code/donate/img/common/gp-logo.png>
+        <p>閣下使用的瀏覽器並未支援此頁面。請更新您的瀏覽器，然後再作嘗試。我們建議使用以下瀏覽器的最新版本：</p>
+        <ul>
+            <li>Google Chrome</li>
+            <li>Mozilla Firefox</li>
+            <li>Apple Safari</li>
+            <li>Microsoft Edge</li>
+        </ul>
+    </div>
+    <!-- main -->
+    <main id="app" style="opacity: 0;"></main>
     <!-- built files will be auto injected -->
-  </body>
+</body>
+
 </html>

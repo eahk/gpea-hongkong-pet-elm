@@ -1,3 +1,4 @@
+@import 'universal/colors';
 $facebook: rgb(59, 89, 182);
 $facebook-chatbot: #0084ff;
 $instagram: #4e433c;
@@ -16,7 +17,12 @@ $dark-blue: #044866;
 $sky-blue: #0BB5FF;
 $dark-gray: #6D6D6D;
 $light-gray: #DDDDDD;
+//
 $asideBoxShadow: 30px 0px 60px 5px rgba(0, 0, 0, 0.45);
+$neutral-white-background: rgba(100%, 100%, 100%, 0.8),
+rgba(100%, 100%, 100%, 0.9);
+//shapes
+$triangle: polygon(100% 0, 0% 100%, 100% 100%);
 //
 $type-scales: (minor-second: 1.067, major-second: 1.125, minor-third: 1.200, major-third: 1.250, perfect-fourth: 1.333, augmented-fourth: 1.414, perfect-fifth: 1.500, golden-ratio: 1.618);
 $heading-type-scale-base: minor-third;
