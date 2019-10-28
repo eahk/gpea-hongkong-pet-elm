@@ -166,6 +166,22 @@ export default {
       helpers.enFormFieldInit()
       helpers.enFormType()
       helpers.createBirthYearList()
+      helpers.enFormEmailCheck()
+      let setEmailConsent = function() {
+        let pageEmailConsent = document.querySelector(
+          '#en__field_supporter_questions_7275'
+        ).checked
+          ? 'Y'
+          : 'N'
+        sessionStorage.setItem('pageEmailConsent', pageEmailConsent)
+      }
+      setEmailConsent()
+      document
+        .querySelector('#en__field_supporter_questions_7275')
+        .addEventListener('change', function() {
+          setEmailConsent()
+          // console.log(sessionStorage.getItem('pageEmailConsent'))
+        })
     }
     //
     this.$nextTick(() => {
