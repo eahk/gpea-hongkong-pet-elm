@@ -234,3 +234,62 @@ export const enFormCollapse = function() {
     }
   })
 }
+
+export const enFormEmailCheck = function() {
+  //
+  let domains = [
+    'me.com',
+    'outlook.com',
+    'netvigator.com',
+    'cloud.com',
+    'live.hk',
+    'msn.com',
+    'gmail.com',
+    'hotmail.com',
+    'ymail.com',
+    'yahoo.com',
+    'yahoo.com.tw',
+    'yahoo.com.hk',
+  ]
+  let topLevelDomains = ['com', 'net', 'org']
+  //
+  let email = document.querySelector('#en__field_supporter_emailAddress')
+  //
+  var superStringDistance = function(string1, string2) {
+    // a string distance algorithm of your choosing
+  }
+  //
+  const mailCheckMessage = document.createElement('span')
+  mailCheckMessage.classList.add('mailcheck-message')
+  $('.en__field--emailAddress').append(mailCheckMessage)
+  $('.mailcheck-message').hide()
+  //
+  email.addEventListener('blur', function() {
+    Mailcheck.run({
+      email: this.value,
+      domains: domains, // optional
+      topLevelDomains: topLevelDomains, // optional
+      suggested: function(suggestion) {
+        var suggestion =
+          "您想輸入的是 <span class='suggestion'>" +
+          "<span class='address'>" +
+          suggestion.address +
+          '</span>' +
+          "@<a href='#' class='domain'>" +
+          suggestion.domain +
+          '</a></span> 嗎?'
+        //
+        $('.mailcheck-message').html(suggestion)
+        $('.mailcheck-message').show()
+      },
+      empty: function() {
+        // console.log('empty email address')
+      },
+    })
+  })
+  //
+  $('.mailcheck-message').on('click', function() {
+    email.value = document.querySelector('.suggestion').innerText
+    $(this).empty()
+  })
+}

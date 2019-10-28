@@ -7,17 +7,15 @@
 }
 
 body {
+  margin: 0;
   max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   &.modal-open {
     overflow: hidden;
   }
-}
-
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .main {

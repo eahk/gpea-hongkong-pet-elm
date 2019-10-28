@@ -2,17 +2,22 @@
   "name": "gpea-hongkong-pet-elm",
   "version": "0.1.0",
   "private": true,
+  "description": "## Project setup ``` npm install ```",
+  "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "main": ".eslintrc.js",
   "dependencies": {
     "animate.css": "^3.7.2",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.4",
+    "core-js": "^3.3.2",
     "jquery": "^3.4.1",
     "lodash.debounce": "^4.0.8",
+    "mailcheck": "^1.1.1",
     "mobile-detect": "^1.4.4",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
@@ -29,9 +34,9 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.1",
-    "@vue/cli-plugin-eslint": "^3.12.1",
-    "@vue/cli-service": "^3.12.1",
+    "@vue/cli-plugin-babel": "^4.0.5",
+    "@vue/cli-plugin-eslint": "^4.0.5",
+    "@vue/cli-service": "^4.0.5",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
@@ -41,12 +46,9 @@
     "sass-loader": "^7.3.1",
     "vue-template-compiler": "^2.6.10"
   },
-  "description": "## Project setup ``` npm install ```",
-  "main": ".eslintrc.js",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "gpea-hongkong-pet-elm"
-  },
-  "author": "",
-  "license": "MIT"
+  }
 }
