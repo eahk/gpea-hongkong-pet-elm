@@ -1,5 +1,5 @@
 {
-  "name": "vue-elm",
+  "name": "gpea-hongkong-pet-elm",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -40,5 +40,13 @@
     "sass": "^1.23.1",
     "sass-loader": "^7.3.1",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "gpea-hongkong-pet-elm"
+  },
+  "author": "",
+  "license": "MIT"
 }
