@@ -1,25 +1,25 @@
-import * as helpers from '@/helpers.js'
-import { mainShare, whatsAppShare } from '@/share.js'
-import NProgress from 'nprogress'
+import * as helpers from "@/helpers.js";
+import { mainShare, whatsAppShare } from "@/share.js";
+import NProgress from "nprogress";
 NProgress.configure({
-  showSpinner: false,
-})
-const debounce = require('lodash.debounce')
+  showSpinner: false
+});
+const debounce = require("lodash.debounce");
 //
 const appendForm = function() {
-  const nativeForm = document.querySelector('form.en__component--page')
-  const enFormWrapper = document.querySelector('.enform__wrapper')
+  const nativeForm = document.querySelector("form.en__component--page");
+  const enFormWrapper = document.querySelector(".enform__wrapper");
   if (nativeForm && enFormWrapper) {
-    enFormWrapper.appendChild(nativeForm)
+    enFormWrapper.appendChild(nativeForm);
   }
-}
+};
 //
-import AppHeader from '@/components/AppHeader.vue'
-import AppFooter from '@/components/AppFooter.vue'
+import AppHeader from "@/components/AppHeader.vue";
+import AppFooter from "@/components/AppFooter.vue";
 export default {
   components: {
     AppHeader,
-    AppFooter,
+    AppFooter
   },
   data() {
     return {
@@ -28,11 +28,11 @@ export default {
         isMobile: false,
         isLoading: true,
         viewportHeight: 0,
-        scrollDepth: 0,
+        scrollDepth: 0
       },
       showMobileForm: false,
-      formSubmitted: false,
-    }
+      formSubmitted: false
+    };
   },
   methods: {
     getDocumentHeight() {
@@ -42,14 +42,14 @@ export default {
         document.documentElement.clientHeight,
         document.documentElement.scrollHeight,
         document.documentElement.offsetHeight
-      )
+      );
     },
     getWindowHeight() {
       return (
         window.innerHeight ||
         document.documentElement.clientHeight ||
-        document.getElementsByTagName('body')[0].clientHeight
-      )
+        document.getElementsByTagName("body")[0].clientHeight
+      );
     },
     getScrollTop() {
       return window.pageYOffset !== undefined
@@ -58,142 +58,140 @@ export default {
             document.documentElement ||
             document.body.parentNode ||
             document.body
-          ).scrollTop
+          ).scrollTop;
     },
     checkMobile() {
-      this.PageFn.isMobile = helpers.mobilecheck()
-      this.$store.commit('SET_MOBILE', helpers.mobilecheck())
+      this.PageFn.isMobile = helpers.mobilecheck();
+      this.$store.commit("SET_MOBILE", helpers.mobilecheck());
     },
     handleResize() {
-      this.$store.commit('SET_RESIZING', true)
-      this.checkMobile()
+      this.$store.commit("SET_RESIZING", true);
+      this.checkMobile();
       if (!this.PageFn.isMobile && !this.showMobileForm) {
-        this.showMobileForm = true
+        this.showMobileForm = true;
       }
-      this.$store.commit('SET_RESIZING', false)
+      this.$store.commit("SET_RESIZING", false);
     },
     handleScroll() {
-      let scroll = this.getScrollTop() / this.innerHeight
-      this.PageFn.scrollDepth = Math.round(scroll * 100)
+      let scroll = this.getScrollTop() / this.innerHeight;
+      this.PageFn.scrollDepth = Math.round(scroll * 100);
     },
     pageInit() {
-      this.PageFn.isLoading = true
-      this.handleResize()
-      this.PageFn.isLoading = false
+      this.PageFn.isLoading = true;
+      this.handleResize();
+      this.PageFn.isLoading = false;
     },
     openPetitionFullSection() {
       if (this.PageFn.isMobile && !this.showMobileForm) {
-        this.$store.commit('SET_SCROLLOFF', true)
-        this.showMobileForm = true
+        this.$store.commit("SET_SCROLLOFF", true);
+        this.showMobileForm = true;
       }
     },
     closePetitionFullSection() {
       if (this.PageFn.isMobile && this.showMobileForm) {
-        this.$store.commit('SET_SCROLLOFF', false)
-        this.showMobileForm = false
+        this.$store.commit("SET_SCROLLOFF", false);
+        this.showMobileForm = false;
       }
-    },
+    }
   },
   computed: {
     innerHeight() {
-      return this.getDocumentHeight() - this.getWindowHeight()
+      return this.getDocumentHeight() - this.getWindowHeight();
     },
     scrollDepth() {
-      return this.PageFn.scrollDepth
+      return this.PageFn.scrollDepth;
     },
     isResizing() {
-      return this.$store.state.isResizing
+      return this.$store.state.isResizing;
     },
     scrollOff: function() {
-      return this.$store.state.scrollOff
+      return this.$store.state.scrollOff;
     },
     mobileBtnText() {
-      return this.formSubmitted ? '感謝您聯署守護大嶼' : '立即聯署'
+      return this.formSubmitted ? "感謝您聯署守護大嶼" : "立即聯署";
     },
     progress() {
-      return this.$store.state.progress
-    },
+      return this.$store.state.progress;
+    }
   },
   watch: {
     $route: function() {
-      this.pageInit()
-      console.log('Route changed')
+      this.pageInit();
+      console.log("Route changed");
     },
     scrollOff(val) {
       function makeScrollOff() {
-        document.documentElement.style.overflow = 'hidden'
-        document.body.style.overflow = 'hidden'
-        document.body.classList.add('modal-open')
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+        document.body.classList.add("modal-open");
       }
       function disableScrollOff() {
-        document.documentElement.style.overflow = ''
-        document.body.style.overflow = ''
-        document.body.classList.remove('modal-open')
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        document.body.classList.remove("modal-open");
       }
-      val ? makeScrollOff() : disableScrollOff()
+      val ? makeScrollOff() : disableScrollOff();
     },
     formSubmitted(val) {
       if (val) {
-        console.log('petition has been signed')
-        this.showMobileForm = true
+        console.log("petition has been signed");
+        this.showMobileForm = true;
       }
-    },
+    }
   },
   created() {
-    this.$store.dispatch('GET_PROGRESS')
+    this.$store.dispatch("GET_PROGRESS");
     //
-    NProgress.start()
-    window.addEventListener('resize', debounce(this.handleResize, 200))
-    window.addEventListener('scroll', this.handleScroll)
+    NProgress.start();
+    window.addEventListener("resize", debounce(this.handleResize, 200));
+    window.addEventListener("scroll", this.handleScroll);
     //
-    const page = window.location.pathname.split('/').slice(-1)[0]
-    this.currentPage = page
+    const page = window.location.pathname.split("/").slice(-1)[0];
+    this.currentPage = page;
     if (page == 2) {
-      this.formSubmitted = true
-      const shareBtn = document.querySelector('.button--share')
-      const whatsappBtn = document.querySelector('.button--whatsappshare')
+      this.formSubmitted = true;
+      const shareBtn = document.querySelector(".button--share");
+      const whatsappBtn = document.querySelector(".button--whatsappshare");
       if (shareBtn) {
-        shareBtn.addEventListener('click', mainShare)
+        shareBtn.addEventListener("click", mainShare);
       }
       if (whatsappBtn) {
-        whatsappBtn.addEventListener('click', whatsAppShare)
+        whatsappBtn.addEventListener("click", whatsAppShare);
       }
     }
   },
   mounted() {
-    appendForm()
+    appendForm();
     if (!this.formSubmitted) {
-      helpers.enFormFieldInit()
-      helpers.enFormType()
-      helpers.createBirthYearList()
-      helpers.enFormEmailCheck()
-      let setEmailConsent = function() {
-        let pageEmailConsent = document.querySelector(
-          '#en__field_supporter_questions_7275'
-        ).checked
-          ? 'Y'
-          : 'N'
-        sessionStorage.setItem('pageEmailConsent', pageEmailConsent)
+      helpers.enFormFieldInit();
+      helpers.enFormType();
+      helpers.createBirthYearList();
+      helpers.enFormEmailCheck();
+      const pageEmailConsent = document.querySelector(
+        "#en__field_supporter_questions_7275"
+      );
+      if (pageEmailConsent) {
+        let setEmailConsent = function() {
+          pageEmailConsent.checked ? "Y" : "N";
+          sessionStorage.setItem("pageEmailConsent", pageEmailConsent);
+        };
+        setEmailConsent();
+        pageEmailConsent.addEventListener("change", function() {
+          setEmailConsent();
+        });
       }
-      setEmailConsent()
-      document
-        .querySelector('#en__field_supporter_questions_7275')
-        .addEventListener('change', function() {
-          setEmailConsent()
-          // console.log(sessionStorage.getItem('pageEmailConsent'))
-        })
     }
     //
     this.$nextTick(() => {
-      NProgress.done()
-      this.pageInit()
-      this.$store.commit('SET_VIEW_LOADING', false)
-    })
+      NProgress.done();
+      this.pageInit();
+      this.$store.commit("SET_VIEW_LOADING", false);
+    });
     //
   },
   destroyed() {
-    document.removeEventListener('resize', this.handleResize)
-    document.removeEventListener('scroll', this.handleScroll)
-    alert('Please refresh the page')
-  },
-}
+    document.removeEventListener("resize", this.handleResize);
+    document.removeEventListener("scroll", this.handleScroll);
+    alert("Please refresh the page");
+  }
+};
