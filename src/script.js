@@ -117,7 +117,7 @@ export default {
   watch: {
     $route: function() {
       this.pageInit();
-      console.log("Route changed");
+      // console.log("Route changed");
     },
     scrollOff(val) {
       function makeScrollOff() {
@@ -134,7 +134,7 @@ export default {
     },
     formSubmitted(val) {
       if (val) {
-        console.log("petition has been signed");
+        // console.log("petition has been signed");
         this.showMobileForm = true;
       }
     }

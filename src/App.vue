@@ -4,29 +4,24 @@
       <!-- loading -->
       <fade-transition :duration="400">
         <div class="main-loading" v-if="PageFn.isLoading || isResizing">
-          <img src="@/assets/img/gp-logo-vertical.png" v-bind:class="{loading: PageFn.isLoading}">
+          <img src="@/assets/img/gp-logo-vertical.png" v-bind:class="{loading: PageFn.isLoading}" />
         </div>
       </fade-transition>
       <!-- header -->
-      <app-header/>
+      <app-header />
       <!-- content -->
       <section class="section--content content site-content">
         <fade-transition :duration="400">
-          <router-view/>
+          <router-view />
         </fade-transition>
       </section>
       <!-- end of content section -->
       <!-- enform -->
-      <slide-x-right-transition :duration="600">
+      <slide-x-right-transition :duration="400">
         <section class="section section--form enform" ref="enform" v-show="showMobileForm">
           <div class="container">
             <div class="enform-progress">
               <div class="p-progress">
-                <!--
-                <p class="p-progress__participants">
-                  <span class="font-weight-bold">{{progress.participants | formatNumber}}</span>人已聯署
-                </p>
-                -->
                 <p class="p-progress__participants">
                   <span class="font-weight-bold">{{progress.participants | formatNumber}}</span> 人已聯署
                 </p>
@@ -61,7 +56,7 @@
     </div>
     <!-- end of main inner-->
     <!-- footer -->
-    <app-footer/>
+    <app-footer />
     <!-- mobile sign now -->
     <div
       class="mobile-sign-now"
