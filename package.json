@@ -2,7 +2,6 @@
   "name": "gpea-hongkong-pet-elm",
   "version": "0.1.0",
   "private": true,
-  "description": "## Project setup ``` npm install ```",
   "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
