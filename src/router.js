@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "@/views/Home.vue";
-import Revamp from "@/views/Revamp.vue";
 // import Legco from '@/views/Legco.vue'
 Vue.use(Router);
 
@@ -16,18 +15,13 @@ const router = new Router({
       path: "/mermaid",
       name: "mermaid",
       component: Home,
-      props: { theme: "mermaid" }
+      props: { theme: "eco" }
     },
     {
       path: "/ecology",
       name: "ecology",
       component: Home,
       props: { theme: "eco" }
-    },
-    {
-      path: "/revamp",
-      name: "revamp",
-      component: Revamp
     }
     /*
     {
