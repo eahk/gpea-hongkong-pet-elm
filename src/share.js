@@ -24,8 +24,8 @@ const mainShare = event => {
           "海洋住屋不對立，為了珍貴脆弱的香港海洋生態，及讓市民安居樂業，一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！👉 ",
         url: "https://act.gp/2VD8bGF"
       })
-      .then(() => console.log("Successfully shared"))
-      .catch(error => console.log("Error sharing:", error));
+      .then()
+      .catch();
   } else {
     fbShare();
   }

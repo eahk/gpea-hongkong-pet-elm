@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: "https://api.greenpeace.org.hk/2020/elm/",
   css: {
     loaderOptions: {
       // by default the `sass` option will apply to both syntaxes
