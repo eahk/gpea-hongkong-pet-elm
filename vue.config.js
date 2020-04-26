@@ -1,5 +1,10 @@
+// vue.config.js
 module.exports = {
-  publicPath: "https://api.greenpeace.org.hk/2020/elm/",
+  publicPath:
+    process.env.NODE_ENV === "production"
+      ? "https://api.greenpeace.org.hk/2020/elm/"
+      : "/",
+  filenameHashing: false,
   css: {
     loaderOptions: {
       // by default the `sass` option will apply to both syntaxes
