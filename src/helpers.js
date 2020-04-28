@@ -1,59 +1,59 @@
-'use strict'
+"use strict";
 /* eslint-disable */
-import $ from 'jquery'
-import Mailcheck from 'mailcheck'
+import $ from "jquery";
+import Mailcheck from "mailcheck";
 
 export const numberWithCommas = function(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-}
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 
-export const delay = time => new Promise(resolve => setTimeout(resolve, time))
+export const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
 export const addEvent = function(el, type, handler) {
-  if (el.attachEvent) el.attachEvent('on' + type, handler)
-  else el.addEventListener(type, handler)
-}
+  if (el.attachEvent) el.attachEvent("on" + type, handler);
+  else el.addEventListener(type, handler);
+};
 
 export const removeEvent = function(el, type, handler) {
-  if (el.detachEvent) el.detachEvent('on' + type, handler)
-  else el.removeEventListener(type, handler)
-}
+  if (el.detachEvent) el.detachEvent("on" + type, handler);
+  else el.removeEventListener(type, handler);
+};
 
 export const hasClass = function(elem, className) {
-  return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ')
-}
+  return new RegExp(" " + className + " ").test(" " + elem.className + " ");
+};
 
 export const addClass = function(elem, className) {
   if (!hasClass(elem, className)) {
-    elem.className += ' ' + className
+    elem.className += " " + className;
   }
-}
+};
 
 export const removeClass = function(elem, className) {
-  var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' '
+  var newClass = " " + elem.className.replace(/[\t\r\n]/g, " ") + " ";
   if (hasClass(elem, className)) {
-    while (newClass.indexOf(' ' + className + ' ') >= 0) {
-      newClass = newClass.replace(' ' + className + ' ', ' ')
+    while (newClass.indexOf(" " + className + " ") >= 0) {
+      newClass = newClass.replace(" " + className + " ", " ");
     }
-    elem.className = newClass.replace(/^\s+|\s+$/g, '')
+    elem.className = newClass.replace(/^\s+|\s+$/g, "");
   }
-}
+};
 
 export const toggleClass = function(elem, className) {
-  var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' '
+  var newClass = " " + elem.className.replace(/[\t\r\n]/g, " ") + " ";
   if (hasClass(elem, className)) {
-    while (newClass.indexOf(' ' + className + ' ') >= 0) {
-      newClass = newClass.replace(' ' + className + ' ', ' ')
+    while (newClass.indexOf(" " + className + " ") >= 0) {
+      newClass = newClass.replace(" " + className + " ", " ");
     }
-    elem.className = newClass.replace(/^\s+|\s+$/g, '')
+    elem.className = newClass.replace(/^\s+|\s+$/g, "");
   } else {
-    elem.className += ' ' + className
+    elem.className += " " + className;
   }
-}
+};
 
 export const mobilecheck = function() {
-  var check = false
-  ;(function(a) {
+  var check = false;
+  (function(a) {
     if (
       /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
         a
@@ -62,237 +62,240 @@ export const mobilecheck = function() {
         a.substr(0, 4)
       )
     )
-      check = true
-  })(navigator.userAgent || navigator.vendor || window.opera)
-  return check
-}
+      check = true;
+  })(navigator.userAgent || navigator.vendor || window.opera);
+  return check;
+};
 
 export const getAllUrlParams = function(url) {
-  var queryString = url ? url.split('?')[1] : window.location.search.slice(1)
-  var obj = {}
+  var queryString = url ? url.split("?")[1] : window.location.search.slice(1);
+  var obj = {};
 
   if (queryString) {
-    queryString = queryString.split('#')[0]
+    queryString = queryString.split("#")[0];
 
-    var arr = queryString.split('&')
+    var arr = queryString.split("&");
 
     for (var i = 0; i < arr.length; i++) {
-      var a = arr[i].split('=')
+      var a = arr[i].split("=");
 
-      var paramNum
+      var paramNum;
       var paramName = a[0].replace(/\[\d*]/, function(v) {
-        paramNum = v.slice(1, -1)
-        return ''
-      })
+        paramNum = v.slice(1, -1);
+        return "";
+      });
 
-      var paramValue = typeof a[1] === 'undefined' ? true : a[1]
+      var paramValue = typeof a[1] === "undefined" ? true : a[1];
 
-      paramName = paramName.toLowerCase()
-      paramValue = paramValue.toLowerCase()
+      paramName = paramName.toLowerCase();
+      paramValue = paramValue.toLowerCase();
 
       if (obj[paramName]) {
-        if (typeof obj[paramName] === 'string') {
-          obj[paramName] = [obj[paramName]]
+        if (typeof obj[paramName] === "string") {
+          obj[paramName] = [obj[paramName]];
         }
-        if (typeof paramNum === 'undefined') {
-          obj[paramName].push(paramValue)
+        if (typeof paramNum === "undefined") {
+          obj[paramName].push(paramValue);
         } else {
-          obj[paramName][paramNum] = paramValue
+          obj[paramName][paramNum] = paramValue;
         }
       } else {
-        obj[paramName] = paramValue
+        obj[paramName] = paramValue;
       }
     }
   }
-  return obj
-}
+  return obj;
+};
 
 /* DIMENSION */
 
 export const getUsableHeight = function() {
   // check if this page is within a app frame
   var isInAppMode =
-    ('standalone' in navigator && navigator.standalone) ||
+    ("standalone" in navigator && navigator.standalone) ||
     (window.chrome &&
       window.top.chrome.app &&
-      window.top.chrome.app.isInstalled)
+      window.top.chrome.app.isInstalled);
 
-  var ua = navigator.userAgent
+  var ua = navigator.userAgent;
   // memoized values
-  var isIphone = ua.indexOf('iPhone') !== -1 || ua.indexOf('iPod') !== -1
-  var isIpad = ua.indexOf('iPad') !== -1
-  var isAndroid = ua.indexOf('Android') !== -1
-  var isMobile = isIphone || isIpad || isAndroid
+  var isIphone = ua.indexOf("iPhone") !== -1 || ua.indexOf("iPod") !== -1;
+  var isIpad = ua.indexOf("iPad") !== -1;
+  var isAndroid = ua.indexOf("Android") !== -1;
+  var isMobile = isIphone || isIpad || isAndroid;
 
   // compute the missing area taken up by the header of the web browser to offset the screen height
-  var usableOffset = 0
+  var usableOffset = 0;
   if (isIphone) {
-    usableOffset = 20
-  } else if (isAndroid && ua.indexOf('Chrome') === -1) {
-    usableOffset = 1
+    usableOffset = 20;
+  } else if (isAndroid && ua.indexOf("Chrome") === -1) {
+    usableOffset = 1;
   }
 
   return function() {
     if (!isMobile) {
-      return window.innerHeight
+      return window.innerHeight;
     }
     var isLandscape = window.innerWidth > window.innerHeight,
-      height
+      height;
     // on ios devices, this must use screen
     if (isIphone) {
-      height = isLandscape ? screen.width : screen.height
+      height = isLandscape ? screen.width : screen.height;
       if (!isInAppMode) {
-        height -= isLandscape ? 32 : 44
-        height += 1
+        height -= isLandscape ? 32 : 44;
+        height += 1;
       }
     } else {
       height =
         (isLandscape ? window.outerWidth : window.outerHeight) /
-        (window.devicePixelRatio || 1)
+        (window.devicePixelRatio || 1);
     }
-    return height - usableOffset
-  }
-}
+    return height - usableOffset;
+  };
+};
 
 /* EN Helpers */
 
 export const createBirthYearList = function() {
-  const yearBegin = 1900
-  const birthYear = document.getElementById('en__field_supporter_NOT_TAGGED_6')
+  const yearBegin = 1900;
+  const birthYear = document.getElementById("en__field_supporter_NOT_TAGGED_6");
   if (birthYear) {
-    let c = document.createDocumentFragment()
-    let cLabel = document.createElement('option')
-    cLabel.value = ''
-    cLabel.innerHTML = '出生年份'
-    c.append(cLabel)
+    let c = document.createDocumentFragment();
+    let cLabel = document.createElement("option");
+    cLabel.value = "";
+    cLabel.innerHTML = "出生年份";
+    c.append(cLabel);
     for (let i = new Date().getFullYear(); i > yearBegin; i--) {
-      let opt = document.createElement('option')
-      opt.value = '01/01/' + i.toString()
-      opt.innerHTML = i.toString()
-      c.appendChild(opt)
+      let opt = document.createElement("option");
+      opt.value = "01/01/" + i.toString();
+      opt.innerHTML = i.toString();
+      c.appendChild(opt);
     }
-    birthYear.innerHTML = ''
-    birthYear.append(c)
+    birthYear.innerHTML = "";
+    birthYear.append(c);
   }
-}
+};
 
 export const enFormType = function() {
-  const enform = document.querySelector('form.en__component')
-  const email = document.getElementById('en__field_supporter_emailAddress')
-  const phone = document.getElementById('en__field_supporter_phoneNumber')
-  const formFields = document.querySelectorAll('.en__field--text')
+  const enform = document.querySelector("form.en__component");
+  const email = document.getElementById("en__field_supporter_emailAddress");
+  const phone = document.getElementById("en__field_supporter_phoneNumber");
+  const formFields = document.querySelectorAll(".en__field--text");
   //
   if (email && phone) {
-    email.setAttribute('type', 'email')
-    phone.setAttribute('type', 'tel')
+    email.setAttribute("type", "email");
+    phone.setAttribute("type", "tel");
   }
   // init keyboard type
   if (formFields) {
     formFields.forEach(field => {
-      let textField = field.querySelector('.en__field__input--text')
-      let label = field.querySelector('.en__field__label').textContent
-      textField.placeholder = label
-    })
+      let textField = field.querySelector(".en__field__input--text");
+      let label = field.querySelector(".en__field__label").textContent;
+      textField.placeholder = label;
+    });
   }
   // init form label
   if (enform) {
-    enform.setAttribute('autocomplete', 'off')
+    enform.setAttribute("autocomplete", "off");
   }
-}
+};
 
 export const enFormFieldInit = function() {
   const formInputs = document.querySelectorAll(
-    '.en__field__input, #en__field_supporter_NOT_TAGGED_6'
-  )
+    ".en__field__input, #en__field_supporter_NOT_TAGGED_6"
+  );
   if (formInputs) {
     Array.from(formInputs).map(input => {
       const formInteraction = function() {
-        this.parentNode.classList.toggle('input--focused')
-      }
-      addEvent(input, 'focus', formInteraction)
-      addEvent(input, 'blur', formInteraction)
-    })
+        this.parentNode.classList.toggle("input--focused");
+      };
+      addEvent(input, "focus", formInteraction);
+      addEvent(input, "blur", formInteraction);
+    });
   }
-}
+};
 
 export const enFormCollapse = function() {
-  const enform = document.querySelector('.enform')
+  const enform = document.querySelector(".enform");
   // init focus & blur class
   const expandForm = () => {
-    enform.classList.add('form--active')
-  }
+    enform.classList.add("form--active");
+  };
   // expandForm
   const collapseForm = () => {
-    enform.classList.remove('form--active')
-  }
+    enform.classList.remove("form--active");
+  };
   addEvent(
-    document.querySelector('.en__field--emailAddress input'),
-    'click',
+    document.querySelector(".en__field--emailAddress input"),
+    "click",
     expandForm
-  )
-  addEvent(document.querySelector('.enform__close'), 'click', collapseForm)
-  window.addEventListener('keydown', event => {
-    if (event.key == 'Escape' || event.key == 'Esc') {
-      collapseForm
+  );
+  addEvent(document.querySelector(".enform__close"), "click", collapseForm);
+  window.addEventListener("keydown", event => {
+    if (event.key == "Escape" || event.key == "Esc") {
+      collapseForm;
     }
-  })
-}
+  });
+};
 
 export const enFormEmailCheck = function() {
   //
   let domains = [
-    'me.com',
-    'outlook.com',
-    'netvigator.com',
-    'cloud.com',
-    'live.hk',
-    'msn.com',
-    'gmail.com',
-    'hotmail.com',
-    'ymail.com',
-    'yahoo.com',
-    'yahoo.com.tw',
-    'yahoo.com.hk',
-  ]
-  let topLevelDomains = ['com', 'net', 'org']
+    "me.com",
+    "outlook.com",
+    "netvigator.com",
+    "cloud.com",
+    "live.hk",
+    "msn.com",
+    "gmail.com",
+    "hotmail.com",
+    "ymail.com",
+    "yahoo.com",
+    "yahoo.com.tw",
+    "yahoo.com.hk"
+  ];
+  let topLevelDomains = ["com", "net", "org"];
   //
-  let email = document.querySelector('#en__field_supporter_emailAddress')
-  //
-  var superStringDistance = function(string1, string2) {
-    // a string distance algorithm of your choosing
+  let email = document.querySelector("#en__field_supporter_emailAddress");
+
+  if (email) {
+    var superStringDistance = function(string1, string2) {
+      // a string distance algorithm of your choosing
+    };
+    //
+    const mailCheckMessage = document.createElement("span");
+    mailCheckMessage.classList.add("mailcheck-message");
+    $(".en__field--emailAddress").append(mailCheckMessage);
+    $(".mailcheck-message").hide();
+    //
+    email.addEventListener("blur", function() {
+      Mailcheck.run({
+        email: this.value,
+        domains: domains, // optional
+        topLevelDomains: topLevelDomains, // optional
+        suggested: function(suggestion) {
+          var suggestion =
+            "您想輸入的是 <span class='suggestion'>" +
+            "<span class='address'>" +
+            suggestion.address +
+            "</span>" +
+            "@<a href='#' class='domain'>" +
+            suggestion.domain +
+            "</a></span> 嗎?";
+          //
+          $(".mailcheck-message").html(suggestion);
+          $(".mailcheck-message").show();
+        },
+        empty: function() {
+          // console.log('empty email address')
+        }
+      });
+    });
+    //
+    $(".mailcheck-message").on("click", function() {
+      email.value = document.querySelector(".suggestion").innerText;
+      $(this).empty();
+    });
   }
   //
-  const mailCheckMessage = document.createElement('span')
-  mailCheckMessage.classList.add('mailcheck-message')
-  $('.en__field--emailAddress').append(mailCheckMessage)
-  $('.mailcheck-message').hide()
-  //
-  email.addEventListener('blur', function() {
-    Mailcheck.run({
-      email: this.value,
-      domains: domains, // optional
-      topLevelDomains: topLevelDomains, // optional
-      suggested: function(suggestion) {
-        var suggestion =
-          "您想輸入的是 <span class='suggestion'>" +
-          "<span class='address'>" +
-          suggestion.address +
-          '</span>' +
-          "@<a href='#' class='domain'>" +
-          suggestion.domain +
-          '</a></span> 嗎?'
-        //
-        $('.mailcheck-message').html(suggestion)
-        $('.mailcheck-message').show()
-      },
-      empty: function() {
-        // console.log('empty email address')
-      },
-    })
-  })
-  //
-  $('.mailcheck-message').on('click', function() {
-    email.value = document.querySelector('.suggestion').innerText
-    $(this).empty()
-  })
-}
+};

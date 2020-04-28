@@ -1,24 +1,25 @@
 // @import 'node_modules/bootstrap/scss/bootstrap';
-@import 'bootstrap/scss/bootstrap-grid.scss';
-@import 'bootstrap/scss/bootstrap-reboot.scss';
+@import "bootstrap/scss/bootstrap-grid.scss";
+@import "bootstrap/scss/bootstrap-reboot.scss";
 //
-@import '~bootstrap/scss/images', '~bootstrap/scss/grid',
-  // "~bootstrap/scss/dropdown",
+@import // '~bootstrap/scss/images',
+    // '~bootstrap/scss/grid',
+    // "~bootstrap/scss/dropdown",
     // "~bootstrap/scss/nav",
     // "~bootstrap/scss/navbar",
     // "~bootstrap/scss/card",
-    '~bootstrap/scss/buttons',
+    "~bootstrap/scss/buttons",
   // "~bootstrap/scss/breadcrumb",
     // "~bootstrap/scss/pagination",
     // "~bootstrap/scss/alert",
-    '~bootstrap/scss/progress',
-  // "~bootstrap/scss/list-group",
-    // "~bootstrap/scss/close",
-    // "~bootstrap/scss/toasts",
-    // "~bootstrap/scss/modal",
-    // "~bootstrap/scss/tooltip",
-    // "~bootstrap/scss/popover",
-    // "~bootstrap/scss/print";
-    '~bootstrap/scss/utilities';
+    "~bootstrap/scss/progress";
+// "~bootstrap/scss/list-group",
+// "~bootstrap/scss/close",
+// "~bootstrap/scss/toasts",
+// "~bootstrap/scss/modal",
+// "~bootstrap/scss/tooltip",
+// "~bootstrap/scss/popover",
+// "~bootstrap/scss/print";
+// '~bootstrap/scss/utilities';
 //
-@import 'node_modules/bootstrap-vue/src/index.scss';
+@import "node_modules/bootstrap-vue/src/index.scss";

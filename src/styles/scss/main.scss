@@ -1,4 +1,4 @@
-@import 'nojs', 'mixins', 'base', 'typography', 'en/enform';
+@import "nojs", "mixins", "base", "typography", "en/enform";
 
 ::selection {
   background: $c-blue-light;
@@ -87,19 +87,19 @@ body {
 
 @media screen and (min-width: 768px) {
   .site-content {
-    width: calc(100% - 300px);
+    width: calc(100% - 350px);
   }
   .enform {
-    max-width: 300px;
+    max-width: 350px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .site-content {
-    width: calc(100% - 350px);
+    width: calc(100% - 400px);
   }
   .enform {
-    max-width: 350px;
+    max-width: 400px;
   }
 }
 
