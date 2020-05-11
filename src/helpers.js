@@ -1,8 +1,7 @@
 "use strict";
 /* eslint-disable */
-import $ from "jquery";
+const $ = jQuery;
 import Mailcheck from "mailcheck";
-
 export const numberWithCommas = function(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
