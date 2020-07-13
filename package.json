@@ -1,8 +1,6 @@
 {
   "name": "gpea-hongkong-pet-elm",
   "version": "0.1.0",
-  "private": true,
-  "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -13,12 +11,10 @@
     "animate.css": "^3.7.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.12.0",
-    "core-js": "^3.6.5",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
     "lodash.debounce": "^4.0.8",
     "mailcheck": "^1.1.1",
     "mobile-detect": "^1.4.4",
-    "node-sass": "^4.14.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",

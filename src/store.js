@@ -42,7 +42,7 @@ export default new Vuex.Store({
         })
         .then(data => {
           const participants = parseInt(data.rows[0].columns[4].value);
-          const goal = 100000;
+          const goal = 150000;
           const progress = {
             participants: participants,
             goal: goal

@@ -1,6 +1,9 @@
+import jQuery from "jquery";
 import * as helpers from "@/helpers.js";
 import { mainShare, whatsAppShare } from "@/share.js";
 import NProgress from "nprogress";
+window.$ = jQuery;
+window.jQuery = jQuery;
 NProgress.configure({
   showSpinner: false
 });
