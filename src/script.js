@@ -1,35 +1,38 @@
 import jQuery from "jquery";
 import * as helpers from "@/helpers.js";
-import { mainShare, whatsAppShare } from "@/share.js";
 import NProgress from "nprogress";
+
 window.$ = jQuery;
 window.jQuery = jQuery;
 NProgress.configure({
   showSpinner: false
 });
 const debounce = require("lodash.debounce");
-//
-const appendForm = function() {
-  const nativeForm = document.querySelector("form.en__component--page");
-  const enFormWrapper = document.querySelector(".enform__wrapper");
-  if (nativeForm && enFormWrapper) {
-    enFormWrapper.appendChild(nativeForm);
-  }
-};
-//
+
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
+
+import MCForm from "./components/MCForm.vue"
+import ThankYouBlock from "./components/ThankYouBlock.vue"
+import FullLoadingPage from "./components/FullLoadingPage.vue"
+
+import * as mcHelper from "@/mc.form-helper.js"
+
 export default {
   components: {
     AppHeader,
-    AppFooter
+    AppFooter,
+    MCForm,
+    ThankYouBlock,
+    FullLoadingPage
   },
   data() {
     return {
       currentPage: 0,
       PageFn: {
         isMobile: false,
-        isLoading: true,
+        isLoading: false,
+        isWaitingInit: false,
         viewportHeight: 0,
         scrollDepth: 0
       },
@@ -80,9 +83,9 @@ export default {
       this.PageFn.scrollDepth = Math.round(scroll * 100);
     },
     pageInit() {
-      this.PageFn.isLoading = true;
+      this.PageFn.isWaitingInit = true;
       this.handleResize();
-      this.PageFn.isLoading = false;
+      this.PageFn.isWaitingInit = false;
     },
     openPetitionFullSection() {
       if (this.PageFn.isMobile && !this.showMobileForm) {
@@ -94,6 +97,46 @@ export default {
       if (this.PageFn.isMobile && this.showMobileForm) {
         this.$store.commit("SET_SCROLLOFF", false);
         this.showMobileForm = false;
+      }
+    },
+    _onSubmit(formDataObj) {
+      try {
+        this.PageFn.isLoading = true
+
+        // prepare the submit data
+        let postData = mcHelper.fetchFormInputs("#mc-form")
+        for (let k in formDataObj) {
+          if (k in postData) {
+            postData[k] = formDataObj[k]
+          }
+        }
+
+        fetch(mcHelper.getPostURL(), {
+          method: 'POST',
+          body: Object.keys(postData).reduce((formData, k) => {
+            formData.append(k, postData[k]);
+            return formData;
+          }, new FormData())
+        })
+        .then(response => response.json())
+        .then(response => {
+          this.PageFn.isLoading = false
+
+          if (response.Supporter) { // ok, go to next page
+            mcHelper.sendPetitionTracking("2020-elm")
+            this.formSubmitted = true
+          } else {
+            console.error(response)
+          }
+        })
+        .catch(error => {
+          this.PageFn.isLoading = false // something wrong
+          alert(error)
+          console.error(error)
+        })
+
+      } catch (e) {
+        console.error(e)
       }
     }
   },
@@ -144,54 +187,18 @@ export default {
   },
   created() {
     this.$store.dispatch("GET_PROGRESS");
-    //
     NProgress.start();
     window.addEventListener("resize", debounce(this.handleResize, 200));
     window.addEventListener("scroll", this.handleScroll);
-    //
-    const page = window.location.pathname.split("/").slice(-1)[0];
-    this.currentPage = page;
-    if (page == 2) {
-      this.formSubmitted = true;
-      const shareBtn = document.querySelector(".button--share");
-      const whatsappBtn = document.querySelector(".button--whatsappshare");
-      if (shareBtn) {
-        shareBtn.addEventListener("click", mainShare);
-      }
-      if (whatsappBtn) {
-        whatsappBtn.addEventListener("click", whatsAppShare);
-      }
-    }
   },
   mounted() {
-    appendForm();
-    if (!this.formSubmitted) {
-      helpers.enFormFieldInit();
-      helpers.enFormType();
-      helpers.createBirthYearList();
-      helpers.enFormEmailCheck();
-      const pageEmailConsent = document.querySelector(
-        "#en__field_supporter_questions_7275"
-      );
-      if (pageEmailConsent) {
-        let setEmailConsent = function() {
-          pageEmailConsent.checked ? "Y" : "N";
-          sessionStorage.setItem("pageEmailConsent", pageEmailConsent);
-        };
-        setEmailConsent();
-        pageEmailConsent.addEventListener("change", function() {
-          setEmailConsent();
-        });
-      }
-    }
-    //
     this.$nextTick(() => {
       NProgress.done();
       this.pageInit();
       this.$store.commit("SET_VIEW_LOADING", false);
     });
-    //
   },
+
   destroyed() {
     document.removeEventListener("resize", this.handleResize);
     document.removeEventListener("scroll", this.handleScroll);

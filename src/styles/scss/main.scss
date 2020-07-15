@@ -124,15 +124,44 @@ body {
       color: #f66;
     }
   }
+
   .en__field--lastName {
-    display: inline-block;
+    display: block;
     width: calc(50% - 5px) !important;
-    margin-right: 3px;
+    margin-right: 5px;
   }
   .en__field--firstName {
-    display: inline-block;
-    width: calc(50% - 5px) !important;
+    display: block;
+    // width: calc(50% - 5px) !important;
   }
+
+  .en__field--MobileCountryCode {
+    display: block;
+    width: 60px;
+    margin-right: 5px;
+    text-align: center;
+  }
+
+  .en__field--email-ok-hongkong {
+    input[type="checkbox"] {
+      -webkit-appearance: checkbox !important;
+      -moz-appearance: checkbox !important;
+      -ms-appearance: checkbox !important;
+      -o-appearance: checkbox !important;
+      appearance: checkbox !important;
+
+      width: 13px;
+      height: 13px;
+      margin-right: 5px;
+      margin-top: 1px;
+    }
+
+    label {
+      cursor: pointer;
+    }
+  }
+
+
   .en__submit button {
     background-color: $c-cyan;
   }
@@ -168,6 +197,7 @@ body {
   margin-bottom: 10px;
   .progress-bar {
     background-color: $c-cyan;
+    animation: width 2s;
   }
   .p-progress {
     display: flex;

@@ -4,7 +4,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "yarn run build && node mc-deploy.js && yarn run build && node mc-deploy.js"
   },
   "main": ".eslintrc.js",
   "dependencies": {
@@ -20,6 +21,7 @@
     "numeral": "^2.0.6",
     "sanitize.css": "^8.0.1",
     "scrollreveal": "^4.0.6",
+    "vee-validate": "^3.3.7",
     "vue": "^2.6.11",
     "vue-clickaway": "^2.2.2",
     "vue-router": "^3.1.6",
@@ -35,6 +37,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
+    "ftps": "^1.1.1",
+    "prerender-spa-plugin": "^3.4.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
