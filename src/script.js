@@ -174,9 +174,11 @@ export default {
         "#en__field_supporter_questions_7275"
       );
       if (pageEmailConsent) {
-        let setEmailConsent = function() {
-          pageEmailConsent.checked ? "Y" : "N";
-          sessionStorage.setItem("pageEmailConsent", pageEmailConsent);
+        const setEmailConsent = function() {
+          sessionStorage.setItem(
+            "pageEmailConsent",
+            pageEmailConsent.checked ? "Y" : "N"
+          );
         };
         setEmailConsent();
         pageEmailConsent.addEventListener("change", function() {

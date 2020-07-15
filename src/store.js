@@ -33,7 +33,6 @@ export default new Vuex.Store({
   },
   actions: {
     GET_PROGRESS: async context => {
-      // const participantsURL = 'https://act.greenpeace.org/page/widget/450476'
       const participantsURL =
         "https://act.greenpeace.org/ea-dataservice/data.service?contentType=json&service=EaDataCapture&token=7a06c0fc-32fe-43f1-8a1b-713b3ea496e1&campaignId=143255&resultType=summary";
       let progress = await fetch(participantsURL)
@@ -41,10 +40,12 @@ export default new Vuex.Store({
           return resp.json();
         })
         .then(data => {
-          const participants = parseInt(data.rows[0].columns[4].value);
+          // console.log(data);
+          // const participants = parseInt(data.rows[0].columns[4].value);
+          const uniqueParticipants = parseInt(data.rows[0].columns[5].value);
           const goal = 150000;
           const progress = {
-            participants: participants,
+            participants: uniqueParticipants,
             goal: goal
           };
           return progress;
