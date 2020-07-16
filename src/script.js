@@ -125,6 +125,7 @@ export default {
           if (response.Supporter) { // ok, go to next page
             mcHelper.sendPetitionTracking("2020-elm")
             this.formSubmitted = true
+            document.querySelector(".enform").scrollIntoView();
           } else {
             console.error(response)
           }

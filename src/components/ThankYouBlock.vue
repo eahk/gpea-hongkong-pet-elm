@@ -27,9 +27,6 @@ export default {
 </script>
 
 <style lang="scss">
-	.enform__header {
-		display: none;
-	}
 	.thankyou {
 		strong {
 			font-size: 22px;
