@@ -1,0 +1,152 @@
+%%[
+	VAR @UtmMedium, @UtmSource, @UtmCampaign, @UtmContent, @UtmTerm, @LeadSource, @PetitionIssueType, @CampaignId, @DonationPageUrl
+
+	/*Set these params when creating a new petition page, for each core interest of the petition set the value to "true" to update the supporters CRM profile otherwise leave the value blank or with false value */
+
+	SET @EndpointURL = "https://cloud.greenhk.greenpeace.org/up-dev-endpoint"
+	SET @CampaignId = "7010k000000iJ7aAAE"
+	SET @LeadSource = "Petition - Plastics"
+	SET @Petition_Interested_In_Arctic__c       = "false"
+	SET @Petition_Interested_In_Climate__c      = "false"
+	SET @Petition_Interested_In_Forest__c       = "false"
+	SET @Petition_Interested_In_Health__c       = "false"
+	SET @Petition_Interested_In_Oceans__c       = "false"
+	SET @Petition_Interested_In_Plastics__c     = "true"
+	SET @DonationPageUrl = "https://www.greenpeace.org/eastasia/"
+
+	/**** Retreive number of responses in campaign used for any petition where petition sign up progress bar is needed to display signups compared to targeted number of signups ****/
+	SET @CampaignRows = RetrieveSalesforceObjects("Campaign","NumberOfResponses, Petition_Signup_Target__c","Id","=",@CampaignId)
+
+	IF RowCount(@CampaignRows) > 0 THEN
+		SET @CampaignSubscriberRow = Row(@CampaignRows, 1)
+		SET @NumberOfResponses = Field(@CampaignSubscriberRow, "NumberOfResponses")
+		SET @Petition_Signup_Target__c = Field(@CampaignSubscriberRow, "Petition_Signup_Target__c")
+	ENDIF
+
+	/*UTM Tracking Params*/
+	SET @UtmMedium          = RequestParameter("utm_medium")
+	SET @UtmSource          = RequestParameter("utm_source")
+	SET @UtmCampaign        = RequestParameter("utm_campaign")
+	SET @UtmContent         = RequestParameter("utm_content")
+	SET @UtmTerm            = RequestParameter("utm_term")
+]%%
+
+<!DOCTYPE html><html lang="zh" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><head><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="https://connect.facebook.net/signals/config/606392640221350?v=1596426457406.9.22&amp;r=stable" async=""></script><script src="https://connect.facebook.net/en_US/sdk.js?hash=86d7c018b58b24a7c1f4bfb5df083505&amp;ua=modern_es6" async="" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/gtm/js?id=GTM-P72JB6F&amp;t=gtm2&amp;cid=996105846.1596426456&amp;aip=true"></script><script src="https://connect.facebook.net/signals/config/532102703555290?v=1596426457406.9.22&amp;r=stable" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script type="text/javascript" async="" src="//www.googleadservices.com/pagead/conversion_async.js"></script><script type="text/javascript" async="" src="//www.googleadservices.com/pagead/conversion_async.js"></script><script type="text/javascript" async="" src="https://static.hotjar.com/c/hotjar-1553325.js?sv=1596426457406"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M6LZL75"></script><script>window.dataLayer = window.dataLayer || [];</script><style>.async-hide {
+        opacity: 0 !important;
+      }</style><script>(function(a, s, y, n, c, h, i, d, e) {
+        s.className += " " + y;
+        h.end = i = function() {
+          s.className = s.className.replace(RegExp(" ?" + y), "");
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function() {
+          i();
+          h.end = null;
+        }, c);
+      })(window, document.documentElement, "async-hide", "dataLayer", 4000, {
+        "GTM-M6LZL75": true,
+      });</script><script>(function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-M6LZL75");</script><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>守護大嶼 - Greenpeace 綠色和平 | 香港</title><meta name="author" content="Greenpeace 綠色和平"><meta name="description" content="海洋住屋不對立，為了珍貴脆弱的香港海洋生態，及讓市民安居樂業，一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！"><meta property="og:title" content="守護大嶼 - Greenpeace 綠色和平 | 香港"><meta property="og:site_name" content="Greenpeace 綠色和平"><meta property="og:description" content="海洋住屋不對立，為了珍貴脆弱的香港海洋生態，及讓市民安居樂業，一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！"><meta property="og:image" content="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1853/ecology-sharelink.jpg?v=1596426457406"><meta property="og:type" content="website"><meta property="fb:app_id" content="192994240714848"><link rel="shortcut icon" type="image/png" href="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1853/gp-favicon.png?v=1596426457406"><link rel="icon" type="image/png" sizes="96x96" href="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1853/gp-favicon.png?v=1596426457406"><link href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;Noto+Sans+TC" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script><style>.no-js *,
+      .no-js-warning,
+      .not-supported-browser *,
+      .browser-warning {
+        display: none !important;
+      }
+
+      .no-js body {
+        display: block !important;
+        width: auto;
+        min-width: 0;
+        height: auto;
+        margin: 20px;
+        font-size: 14px;
+      }
+
+      .no-js .no-js-warning,
+      .no-js .no-js-warning * {
+        display: block !important;
+      }
+
+      .no-js-warning__logo {
+        width: 250px;
+        height: auto;
+      }
+
+      .not-supported-browser body {
+        display: block !important;
+        width: auto;
+        min-width: 0;
+        height: auto;
+        margin: 20px;
+        font-size: 14px;
+      }
+
+      .not-supported-browser .browser-warning,
+      .not-supported-browser .browser-warning * {
+        display: block !important;
+      }
+
+      .browser-warning__logo {
+        width: 250px;
+        height: auto;
+      }
+
+      .browser-warning ul {
+        padding-left: 1.5em;
+      }
+
+      .not-supported-browser .browser-warning ul li {
+        line-height: 1.2em;
+        display: list-item !important;
+        margin-bottom: 2px;
+        list-style-position: outside;
+        list-style-type: disc;
+      }</style><link href="https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/static/css/app.02a9b82d.css" rel="preload" as="style"><link href="https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/static/css/chunk-vendors.6d601855.css" rel="preload" as="style"><link href="https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/static/js/app.9bc3b0d3.js" rel="preload" as="script"><link href="https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/static/js/chunk-vendors.d961a83a.js" rel="preload" as="script"><link href="https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/static/css/chunk-vendors.6d601855.css" rel="stylesheet"><link href="https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/static/css/app.02a9b82d.css" rel="stylesheet"><script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/191-854-4425/?random=1596426455973&amp;cv=1596426457406&amp;fst=1596426455973&amp;num=1&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;eid=376635470&amp;u_h=1440&amp;u_w=2560&amp;u_ah=1417&amp;u_aw=2512&amp;u_cd=24&amp;u_his=2&amp;u_tz=480&amp;u_java=false&amp;u_nplug=0&amp;u_nmime=0&amp;gtm=2wg7m1&amp;sendb=1&amp;ig=1&amp;frm=0&amp;url=http%3A%2F%2Flocalhost%3A8000%2F&amp;tiba=%E5%AE%88%E8%AD%B7%E5%A4%A7%E5%B6%BC%20-%20Greenpeace%20%E7%B6%A0%E8%89%B2%E5%92%8C%E5%B9%B3%20%7C%20%E9%A6%99%E6%B8%AF&amp;hn=www.googleadservices.com&amp;async=1&amp;rfmt=3&amp;fmt=4"></script><script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/257-804-3085/?random=1596426455987&amp;cv=1596426457406&amp;fst=1596426455987&amp;num=1&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;u_h=1440&amp;u_w=2560&amp;u_ah=1417&amp;u_aw=2512&amp;u_cd=24&amp;u_his=2&amp;u_tz=480&amp;u_java=false&amp;u_nplug=0&amp;u_nmime=0&amp;gtm=2wg7m1&amp;sendb=1&amp;ig=1&amp;frm=0&amp;url=http%3A%2F%2Flocalhost%3A8000%2F&amp;tiba=%E5%AE%88%E8%AD%B7%E5%A4%A7%E5%B6%BC%20-%20Greenpeace%20%E7%B6%A0%E8%89%B2%E5%92%8C%E5%B9%B3%20%7C%20%E9%A6%99%E6%B8%AF&amp;hn=www.googleadservices.com&amp;async=1&amp;rfmt=3&amp;fmt=4"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBV2LPD" height=0 width=0 style=display:none;visibility:hidden></iframe></noscript><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div><h1 style="display: none !important;">守護大嶼 - Greenpeace 綠色和平 | 香港</h1><noscript><strong>We're sorry but the page doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div class="no-js-warning"><img class="no-js-warning__logo" src="https://change.greenpeace.org.hk/static/logo/GP-logo-2019-TC-green-%5Bweb%5D-01.png"><p>請啟用瀏覽器的JavaScript功能，以便正確顯示此頁面。啟用後，請重新載入頁面。</p></div><div class="browser-warning"><img class="browser-warning__logo" src="https://change.greenpeace.org.hk/static/logo/GP-logo-2019-TC-green-%5Bweb%5D-01.png"><p>閣下使用的瀏覽器並未支援此頁面。請更新您的瀏覽器，然後再作嘗試。我們建議使用以下瀏覽器的最新版本：</p><ul><li>Google Chrome</li><li>Mozilla Firefox</li><li>Apple Safari</li><li>Microsoft Edge</li></ul></div><main id="app" style="opacity: 0;"></main><form method="post" action="%%=v(@EndpointURL)=%%" class="" id="mc-form">
+		<input placeholder="FirstName" name="FirstName" type="text" value="">
+		<input placeholder="LastName" name="LastName" type="text" value="">
+		<input placeholder="Email" name="Email" type="email" value="">
+		<input placeholder="MobileCountryCode" name="MobileCountryCode" type="text">
+		<input placeholder="MobilePhone" name="MobilePhone" type="tel" value="">
+		<input placeholder="Birthdate" name="Birthdate" type="text" value="">
+		<input placeholder="OptIn" name="OptIn" type="checkbox" value="">
+
+		<input type="hidden" name="req" value="post_data">
+		<input type="hidden" name="LeadSource" value="%%=v(@LeadSource)=%%">
+		<input type="hidden" name="Petition_Interested_In_Arctic__c" value="%%=v(@Petition_Interested_In_Arctic__c)=%%">
+		<input type="hidden" name="Petition_Interested_In_Climate__c" value="%%=v(@Petition_Interested_In_Climate__c)=%%">
+		<input type="hidden" name="Petition_Interested_In_Forest__c" value="%%=v(@Petition_Interested_In_Forest__c)=%%">
+		<input type="hidden" name="Petition_Interested_In_Health__c" value="%%=v(@Petition_Interested_In_Health__c)=%%">
+		<input type="hidden" name="Petition_Interested_In_Oceans__c" value="%%=v(@Petition_Interested_In_Oceans__c)=%%">
+		<input type="hidden" name="Petition_Interested_In_Plastics__c" value="%%=v(@Petition_Interested_In_Plastics__c)=%%">
+		<input type="hidden" name="CampaignId" value="%%=v(@CampaignId)=%%">
+		<input type="hidden" name="UtmMedium" value="%%=v(@UtmMedium)=%%">
+		<input type="hidden" name="UtmSource" value="%%=v(@UtmSource)=%%">
+		<input type="hidden" name="UtmCampaign" value="%%=v(@UtmCampaign)=%%">
+		<input type="hidden" name="UtmContent" value="%%=v(@UtmContent)=%%">
+		<input type="hidden" name="UtmTerm" value="%%=v(@UtmTerm)=%%">
+		<input type="hidden" name="DonationPageUrl" value="%%=v(@DonationPageUrl)=%%">
+		<input name="req" type="hidden" value="post_data">
+
+		<input type="hidden" name="numSignupTarget" value="%%=v(@Petition_Signup_Target__c)=%%">
+		<input type="hidden" name="numResponses" value="%%=v(@NumberOfResponses)=%%">
+	</form>
+</div><script src="https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/static/js/chunk-vendors.d961a83a.js"></script><script src="https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/static/js/app.9bc3b0d3.js"></script>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","532102703555290");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=532102703555290&amp;ev=PageView&amp;noscript=1"></noscript>
+<script type="text/javascript" id="">window.fbAsyncInit=function(){FB.init({appId:"326389397882848",xfbml:!0,version:"v2.8"});FB.AppEvents.logPageView()};</script>
+
+<script type="text/javascript" id="" src="https://connect.facebook.net/en_US/sdk.js"></script><script type="text/javascript" id="" src="https://500009930.collect.igodigital.com/collect.js"></script>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","606392640221350");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=606392640221350&amp;ev=PageView&amp;noscript=1"></noscript>
+
+<script type="text/javascript" id="">_etmc.push(["setOrgId","500009930"]);_etmc.push(["trackPageView"]);</script><div style="display: none;"><img src="https://tau.collect.igodigital.com/c2/500009930/track_page_view?payload=%7B%22title%22%3A%22%E5%AE%88%E8%AD%B7%E5%A4%A7%E5%B6%BC%20-%20Greenpeace%20%E7%B6%A0%E8%89%B2%E5%92%8C%E5%B9%B3%20%7C%20%E9%A6%99%E6%B8%AF%22%2C%22url%22%3A%22http%3A%2F%2Flocalhost%3A8000%2F%22%2C%22referrer%22%3A%22%22%7D" width="0" height="0" title="blank image" aria-hidden="true" style="display: none;"></div></body></html>

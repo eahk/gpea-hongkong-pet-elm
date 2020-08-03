@@ -1,5 +1,5 @@
-const path = require('path')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
+const path = require("path");
+const PrerenderSPAPlugin = require("prerender-spa-plugin");
 
 // vue.config.js
 module.exports = {
@@ -7,7 +7,6 @@ module.exports = {
     process.env.NODE_ENV === "production"
       ? "https://api.greenpeace.org.hk/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc/"
       : "/",
-  filenameHashing: false,
   css: {
     loaderOptions: {
       // by default the `sass` option will apply to both syntaxes
@@ -20,22 +19,21 @@ module.exports = {
       }
     }
   },
-
-  outputDir: 'build',
-
-  assetsDir: 'static',
-
+  outputDir: "build",
+  assetsDir: "static",
   filenameHashing: true,
-
-  configureWebpack:  {
-    plugins: process.env.NODE_ENV === 'production' ? [
-      new PrerenderSPAPlugin({
-        // Required - The path to the webpack-outputted app to prerender.
-        staticDir: path.join(__dirname, 'build'),
-        // Required - Routes to render.
-        routes: [ '/'],
-      })
-    ] : []
+  configureWebpack: {
+    plugins:
+      process.env.NODE_ENV === "production"
+        ? [
+            new PrerenderSPAPlugin({
+              // Required - The path to the webpack-outputted app to prerender.
+              staticDir: path.join(__dirname, "build"),
+              // Required - Routes to render.
+              routes: ["/"]
+            })
+          ]
+        : []
   },
   devServer: {
     disableHostCheck: true
