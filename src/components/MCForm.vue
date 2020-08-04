@@ -123,10 +123,14 @@ z<template>
                 class="en__field__input en__field__input--checkbox"
                 v-model="OptIn"
               />
-              <label
-                for="opt-in"
-                class="en__field__label en__field__label--item"
-              >聯署加入「守護大嶼」，集結更多公眾及重視環境生態的輿論力量，堅守香港海洋最後一道防線！我同意綠色和平持續為我更新環境專案的最新資訊，並按照其個人資料政策與我保持聯絡。</label>
+              <label for="opt-in" class="en__field__label en__field__label--item">
+                我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！
+                <br />綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考
+                <a
+                  href="https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/"
+                  target="_blank"
+                >私隱政策</a>。
+              </label>
             </div>
           </ValidationProvider>
         </div>

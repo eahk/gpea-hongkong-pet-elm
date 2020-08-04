@@ -3,7 +3,7 @@
     <div class="container">
       <p class="footer-text">
         <span>綠色和平存在，因為脆弱的地球需要改變、需要行動。</span>
-        <br>
+        <br />
         <span>但保護地球的使命不能僅靠綠色和平來完成，唯有結合你的力量，才能夠讓地球變得更綠色、更和平。</span>
       </p>
       <div class="footer-list">
@@ -13,7 +13,7 @@
           href="https://act.greenpeace.org/page/4663/donate/1?campaign=countrypark&ref=elm-footer"
         >捐助支持</a>
       </div>
-      <p class="logo-box">© GREENPEACE 2019</p>
+      <p class="logo-box">© GREENPEACE 2020</p>
     </div>
   </footer>
 </template>

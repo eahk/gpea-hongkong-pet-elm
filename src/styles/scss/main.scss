@@ -1,5 +1,13 @@
 @import "nojs", "mixins", "base", "typography", "en/enform";
 
+#mc-form {
+  display: none;
+}
+
+.enform-progress {
+  display: none;
+}
+
 ::selection {
   background: $c-blue-light;
   text-shadow: none;
@@ -160,7 +168,6 @@ body {
       cursor: pointer;
     }
   }
-
 
   .en__submit button {
     background-color: $c-cyan;
