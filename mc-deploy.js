@@ -31,13 +31,13 @@ const FTPS = require("ftps");
  */
 
 // definitions
-let buildFolder = path.join(__dirname, "build");
-(EndpointURL = "https://cloud.greenhk.greenpeace.org/up-dev-endpoint"),
-  (CampaignId = "7010k000000iJ7aAAE"),
-  (DonationPageUrl = "https://www.greenpeace.org/eastasia/"), // not used now
-  (interests = ["Oceans"]), // Arctic, Climate, Forest, Health, Oceans, Plastics
-  (ftpConfigName = "ftp_hk"), // refer to ~/.npm-en-uploader-secret
-  (ftpRemoteDir = "/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc");
+let buildFolder = path.join(__dirname, "build"),
+  EndpointURL = "https://cloud.greenhk.greenpeace.org/up-dev-endpoint",
+  CampaignId = "7010k000000iJ7aAAE",
+  DonationPageUrl = "https://www.greenpeace.org/eastasia/", // not used now
+  interests = ["Oceans"], // Arctic, Climate, Forest, Health, Oceans, Plastics
+  ftpConfigName = "ftp_hk", // refer to ~/.npm-en-uploader-secret
+  ftpRemoteDir = "/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc";
 
 let indexHtmlFilePath = path.join(buildFolder, "index.html");
 let fbuf = fs.readFileSync(indexHtmlFilePath);
@@ -117,9 +117,6 @@ if (matches) {
   let tokens = content.split(matches[1]);
 
   if (tokens.length == 2) {
-    header = tokens[0];
-    footer = tokens[1];
-
     content = tokens[0] + formTmpl + tokens[1];
     console.log("Content form patched");
   } else {
