@@ -1,6 +1,5 @@
 const path = require("path");
 const PrerenderSPAPlugin = require("prerender-spa-plugin");
-
 // vue.config.js
 module.exports = {
   publicPath:
@@ -30,7 +29,8 @@ module.exports = {
               // Required - The path to the webpack-outputted app to prerender.
               staticDir: path.join(__dirname, "build"),
               // Required - Routes to render.
-              routes: ["/"]
+              routes: ["/"],
+              outputDir: path.join(__dirname, "prerendered")
             })
           ]
         : []

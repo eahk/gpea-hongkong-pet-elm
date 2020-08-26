@@ -1,41 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh" class="no-js">
   <head>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-    </script>
     <style>
       .async-hide {
         opacity: 0 !important;
       }
     </style>
-    <script>
-      (function(a, s, y, n, c, h, i, d, e) {
-        s.className += " " + y;
-        h.end = i = function() {
-          s.className = s.className.replace(RegExp(" ?" + y), "");
-        };
-        (a[n] = a[n] || []).hide = h;
-        setTimeout(function() {
-          i();
-          h.end = null;
-        }, c);
-      })(window, document.documentElement, "async-hide", "dataLayer", 4000, {
-        "GTM-M6LZL75": true,
-      });
-    </script>
-    <script>
-      (function(w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-M6LZL75");
-    </script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -136,12 +106,11 @@
       }
     </style>
   </head>
-
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-NBV2LPD"
+        src="https://www.googletagmanager.com/ns.html?id=GTM-M6LZL75"
         height="0"
         width="0"
         style="display:none;visibility:hidden"
@@ -183,327 +152,74 @@
     </div>
     <!-- main -->
     <main id="app" style="opacity: 0;"></main>
-
-
     <!-- MC_FORM_STARTS -->
-    <form method="post" action="https://cloud.greenhk.greenpeace.org/up-dev-endpoint" class="" id="mc-form" style="display:none">
-      <input type="hidden" name="numSignupTarget" value="100">
-      <input type="hidden" name="numResponses" value="30">
+    <form
+      method="post"
+      action="https://cloud.greenhk.greenpeace.org/up-dev-endpoint"
+      class=""
+      id="mc-form"
+      style="display:none"
+    >
+      <input type="hidden" name="numSignupTarget" value="100" />
+      <input type="hidden" name="numResponses" value="30" />
 
-      <input placeholder="FirstName" name="FirstName" type="text" value="">
-      <input placeholder="LastName" name="LastName" type="text" value="">
-      <input placeholder="Email" name="Email" type="email" value="">
-      <input placeholder="MobilePhone" name="MobilePhone" type="tel" value="">
-      <input placeholder="Birthdate" name="Birthdate" type="text" value="">
-      <input placeholder="MobileCountryCode" name="MobileCountryCode" type="text">
-      <input placeholder="OptIn" name="OptIn" type="checkbox" value="">
+      <input placeholder="FirstName" name="FirstName" type="text" value="" />
+      <input placeholder="LastName" name="LastName" type="text" value="" />
+      <input placeholder="Email" name="Email" type="email" value="" />
+      <input placeholder="MobilePhone" name="MobilePhone" type="tel" value="" />
+      <input placeholder="Birthdate" name="Birthdate" type="text" value="" />
+      <input
+        placeholder="MobileCountryCode"
+        name="MobileCountryCode"
+        type="text"
+      />
+      <input placeholder="OptIn" name="OptIn" type="checkbox" value="" />
 
-      <input type="hidden" name="req" value="post_data">
-      <input type="hidden" name="LeadSource" value="Petition - Plastics">
-      <input type="hidden" name="Petition_Interested_In_Arctic__c" value="false">
-      <input type="hidden" name="Petition_Interested_In_Climate__c" value="false">
-      <input type="hidden" name="Petition_Interested_In_Forest__c" value="false">
-      <input type="hidden" name="Petition_Interested_In_Health__c" value="false">
-      <input type="hidden" name="Petition_Interested_In_Oceans__c" value="false">
-      <input type="hidden" name="Petition_Interested_In_Plastics__c" value="true">
-      <input type="hidden" name="CampaignId" value="7010k000000iJ7aAAE">
-      <input type="hidden" name="UtmMedium" value="">
-      <input type="hidden" name="UtmSource" value="">
-      <input type="hidden" name="UtmCampaign" value="">
-      <input type="hidden" name="UtmContent" value="">
-      <input type="hidden" name="UtmTerm" value="">
-      <input type="hidden" name="DonationPageUrl" value="https://www.greenpeace.org/eastasia/">
-      <input name="req" type="hidden" value="post_data">
+      <input type="hidden" name="req" value="post_data" />
+      <input type="hidden" name="LeadSource" value="Petition - Plastics" />
+      <input
+        type="hidden"
+        name="Petition_Interested_In_Arctic__c"
+        value="false"
+      />
+      <input
+        type="hidden"
+        name="Petition_Interested_In_Climate__c"
+        value="false"
+      />
+      <input
+        type="hidden"
+        name="Petition_Interested_In_Forest__c"
+        value="false"
+      />
+      <input
+        type="hidden"
+        name="Petition_Interested_In_Health__c"
+        value="false"
+      />
+      <input
+        type="hidden"
+        name="Petition_Interested_In_Oceans__c"
+        value="false"
+      />
+      <input
+        type="hidden"
+        name="Petition_Interested_In_Plastics__c"
+        value="true"
+      />
+      <input type="hidden" name="CampaignId" value="7010k000000iJ7aAAE" />
+      <input type="hidden" name="UtmMedium" value="" />
+      <input type="hidden" name="UtmSource" value="" />
+      <input type="hidden" name="UtmCampaign" value="" />
+      <input type="hidden" name="UtmContent" value="" />
+      <input type="hidden" name="UtmTerm" value="" />
+      <input
+        type="hidden"
+        name="DonationPageUrl"
+        value="https://www.greenpeace.org/eastasia/"
+      />
+      <input name="req" type="hidden" value="post_data" />
     </form>
     <!-- MC_FORM_ENDS -->
-
-    <!-- built files will be auto injected -->
-    <div style="opacity: 0;">
-      <form
-        method="post"
-        action="/page/40590/petition/2"
-        class="en__component en__component--page"
-        autocomplete="off"
-      >
-        <input type="hidden" name="hidden" class="en__hiddenFields" value="" />
-        <input
-          type="hidden"
-          name="sessionId"
-          value="3d49089ae4304d39989a792123dae00f-server10228"
-        />
-        <input type="hidden" name="gatewaykey" value="" />
-        <input type="hidden" name="gatewayaccountid" value="" />
-        <input type="hidden" name="gatewaymode" value="" />
-
-        <ul class="en__errorList"></ul>
-
-        <div class="en__component en__component--row en__component--row--1">
-          <div class="en__component en__component en__component--column">
-            <div class="en__component en__component--formblock" style="">
-              <div
-                class="en__field en__field--text en__field--405075 en__field--emailAddress en__mandatory"
-              >
-                <label
-                  for="en__field_supporter_emailAddress"
-                  class="en__field__label"
-                  style=""
-                  >電郵地址</label
-                >
-                <div class="en__field__element en__field__element--text">
-                  <input
-                    id="en__field_supporter_emailAddress"
-                    type="email"
-                    class="en__field__input en__field__input--text"
-                    name="supporter.emailAddress"
-                    value=""
-                    placeholder="電郵地址"
-                  />
-                </div>
-                <span class="mailcheck-message" style="display: none;"></span>
-              </div>
-              <div
-                class="en__field en__field--text en__field--510687 en__field--lastName en__mandatory"
-              >
-                <label
-                  for="en__field_supporter_lastName"
-                  class="en__field__label"
-                  style=""
-                  >姓氏</label
-                >
-                <div class="en__field__element en__field__element--text">
-                  <input
-                    id="en__field_supporter_lastName"
-                    type="text"
-                    class="en__field__input en__field__input--text"
-                    name="supporter.lastName"
-                    value=""
-                    placeholder="姓氏"
-                  />
-                </div>
-              </div>
-              <div
-                class="en__field en__field--text en__field--510688 en__field--firstName en__mandatory"
-              >
-                <label
-                  for="en__field_supporter_firstName"
-                  class="en__field__label"
-                  style=""
-                  >名字</label
-                >
-                <div class="en__field__element en__field__element--text">
-                  <input
-                    id="en__field_supporter_firstName"
-                    type="text"
-                    class="en__field__input en__field__input--text"
-                    name="supporter.firstName"
-                    value=""
-                    placeholder="名字"
-                  />
-                </div>
-              </div>
-              <div
-                class="en__field en__field--text en__field--405079 en__field--phoneNumber"
-              >
-                <label
-                  for="en__field_supporter_phoneNumber"
-                  class="en__field__label"
-                  style=""
-                  >手提號碼（選填）</label
-                >
-                <div class="en__field__element en__field__element--text">
-                  <input
-                    id="en__field_supporter_phoneNumber"
-                    type="tel"
-                    class="en__field__input en__field__input--text"
-                    name="supporter.phoneNumber"
-                    value=""
-                    placeholder="手提號碼（選填）"
-                  />
-                </div>
-              </div>
-              <div
-                class="en__field en__field--select en__field--405080 en__field--NOT_TAGGED_6"
-              >
-                <label
-                  for="en__field_supporter_NOT_TAGGED_6"
-                  class="en__field__label"
-                  style=""
-                  >出生年份</label
-                >
-                <div class="en__field__element en__field__element--select">
-                  <select
-                    id="en__field_supporter_NOT_TAGGED_6"
-                    class="en__field__input en__field__input--select"
-                    name="supporter.NOT_TAGGED_6"
-                    ><option value="">出生年份</option
-                    ><option value="01/01/2020">2020</option
-                    ><option value="01/01/2019">2019</option
-                    ><option value="01/01/2018">2018</option
-                    ><option value="01/01/2017">2017</option
-                    ><option value="01/01/2016">2016</option
-                    ><option value="01/01/2015">2015</option
-                    ><option value="01/01/2014">2014</option
-                    ><option value="01/01/2013">2013</option
-                    ><option value="01/01/2012">2012</option
-                    ><option value="01/01/2011">2011</option
-                    ><option value="01/01/2010">2010</option
-                    ><option value="01/01/2009">2009</option
-                    ><option value="01/01/2008">2008</option
-                    ><option value="01/01/2007">2007</option
-                    ><option value="01/01/2006">2006</option
-                    ><option value="01/01/2005">2005</option
-                    ><option value="01/01/2004">2004</option
-                    ><option value="01/01/2003">2003</option
-                    ><option value="01/01/2002">2002</option
-                    ><option value="01/01/2001">2001</option
-                    ><option value="01/01/2000">2000</option
-                    ><option value="01/01/1999">1999</option
-                    ><option value="01/01/1998">1998</option
-                    ><option value="01/01/1997">1997</option
-                    ><option value="01/01/1996">1996</option
-                    ><option value="01/01/1995">1995</option
-                    ><option value="01/01/1994">1994</option
-                    ><option value="01/01/1993">1993</option
-                    ><option value="01/01/1992">1992</option
-                    ><option value="01/01/1991">1991</option
-                    ><option value="01/01/1990">1990</option
-                    ><option value="01/01/1989">1989</option
-                    ><option value="01/01/1988">1988</option
-                    ><option value="01/01/1987">1987</option
-                    ><option value="01/01/1986">1986</option
-                    ><option value="01/01/1985">1985</option
-                    ><option value="01/01/1984">1984</option
-                    ><option value="01/01/1983">1983</option
-                    ><option value="01/01/1982">1982</option
-                    ><option value="01/01/1981">1981</option
-                    ><option value="01/01/1980">1980</option
-                    ><option value="01/01/1979">1979</option
-                    ><option value="01/01/1978">1978</option
-                    ><option value="01/01/1977">1977</option
-                    ><option value="01/01/1976">1976</option
-                    ><option value="01/01/1975">1975</option
-                    ><option value="01/01/1974">1974</option
-                    ><option value="01/01/1973">1973</option
-                    ><option value="01/01/1972">1972</option
-                    ><option value="01/01/1971">1971</option
-                    ><option value="01/01/1970">1970</option
-                    ><option value="01/01/1969">1969</option
-                    ><option value="01/01/1968">1968</option
-                    ><option value="01/01/1967">1967</option
-                    ><option value="01/01/1966">1966</option
-                    ><option value="01/01/1965">1965</option
-                    ><option value="01/01/1964">1964</option
-                    ><option value="01/01/1963">1963</option
-                    ><option value="01/01/1962">1962</option
-                    ><option value="01/01/1961">1961</option
-                    ><option value="01/01/1960">1960</option
-                    ><option value="01/01/1959">1959</option
-                    ><option value="01/01/1958">1958</option
-                    ><option value="01/01/1957">1957</option
-                    ><option value="01/01/1956">1956</option
-                    ><option value="01/01/1955">1955</option
-                    ><option value="01/01/1954">1954</option
-                    ><option value="01/01/1953">1953</option
-                    ><option value="01/01/1952">1952</option
-                    ><option value="01/01/1951">1951</option
-                    ><option value="01/01/1950">1950</option
-                    ><option value="01/01/1949">1949</option
-                    ><option value="01/01/1948">1948</option
-                    ><option value="01/01/1947">1947</option
-                    ><option value="01/01/1946">1946</option
-                    ><option value="01/01/1945">1945</option
-                    ><option value="01/01/1944">1944</option
-                    ><option value="01/01/1943">1943</option
-                    ><option value="01/01/1942">1942</option
-                    ><option value="01/01/1941">1941</option
-                    ><option value="01/01/1940">1940</option
-                    ><option value="01/01/1939">1939</option
-                    ><option value="01/01/1938">1938</option
-                    ><option value="01/01/1937">1937</option
-                    ><option value="01/01/1936">1936</option
-                    ><option value="01/01/1935">1935</option
-                    ><option value="01/01/1934">1934</option
-                    ><option value="01/01/1933">1933</option
-                    ><option value="01/01/1932">1932</option
-                    ><option value="01/01/1931">1931</option
-                    ><option value="01/01/1930">1930</option
-                    ><option value="01/01/1929">1929</option
-                    ><option value="01/01/1928">1928</option
-                    ><option value="01/01/1927">1927</option
-                    ><option value="01/01/1926">1926</option
-                    ><option value="01/01/1925">1925</option
-                    ><option value="01/01/1924">1924</option
-                    ><option value="01/01/1923">1923</option
-                    ><option value="01/01/1922">1922</option
-                    ><option value="01/01/1921">1921</option
-                    ><option value="01/01/1920">1920</option
-                    ><option value="01/01/1919">1919</option
-                    ><option value="01/01/1918">1918</option
-                    ><option value="01/01/1917">1917</option
-                    ><option value="01/01/1916">1916</option
-                    ><option value="01/01/1915">1915</option
-                    ><option value="01/01/1914">1914</option
-                    ><option value="01/01/1913">1913</option
-                    ><option value="01/01/1912">1912</option
-                    ><option value="01/01/1911">1911</option
-                    ><option value="01/01/1910">1910</option
-                    ><option value="01/01/1909">1909</option
-                    ><option value="01/01/1908">1908</option
-                    ><option value="01/01/1907">1907</option
-                    ><option value="01/01/1906">1906</option
-                    ><option value="01/01/1905">1905</option
-                    ><option value="01/01/1904">1904</option
-                    ><option value="01/01/1903">1903</option
-                    ><option value="01/01/1902">1902</option
-                    ><option value="01/01/1901">1901</option></select
-                  >
-                </div>
-              </div>
-              <div
-                class="en__field en__field--checkbox en__field--question en__field--7275 en__field--email-ok-hongkong"
-              >
-                <label class="en__field__label" style=""
-                  >email_ok_hongkong</label
-                >
-                <div
-                  class="en__field__element en__field__element--checkbox"
-                >
-                  <div class="en__field__item">
-                    <input
-                      id="en__field_supporter_questions_7275"
-                      checked=""
-                      type="checkbox"
-                      class="en__field__input en__field__input--checkbox"
-                      value="Y"
-                      name="supporter.questions.7275"
-                    />
-                    <label
-                      for="en__field_supporter_questions_7275"
-                      class="en__field__label en__field__label--item"
-                      >我願意收到綠色和平發送的通訊！我並同意綠色和平按照其私隱政策與個人資料收集聲明與我保持聯絡。</label
-                    >
-                  </div>
-                </div>
-              </div>
-              <input
-                type="hidden"
-                class="en__field__input en__field__input--hidden"
-                name="supporter.NOT_TAGGED_46"
-                value="HK"
-              />
-
-              <input
-                type="hidden"
-                class="en__field__input en__field__input--hidden"
-                name="supporter.NOT_TAGGED_9"
-                value="zh"
-              />
-
-              <div class="en__submit"><button style="">立即聯署</button></div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
   </body>
 </html>

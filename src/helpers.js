@@ -4,8 +4,6 @@
 import jQuery from "jquery";
 import Mailcheck from "mailcheck";
 
-
-
 export const addEvent = function(el, type, handler) {
   if (el.attachEvent) el.attachEvent("on" + type, handler);
   else el.addEventListener(type, handler);
