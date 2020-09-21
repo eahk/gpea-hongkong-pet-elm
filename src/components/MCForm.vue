@@ -15,9 +15,9 @@ z<template>
               type="text"
               placeholder="電郵地址 Email Address"
             />
-            <span class="en__field__error" v-if="errors.length">{{
-              errors[0]
-            }}</span>
+            <span class="en__field__error" v-if="errors.length">
+              {{ errors[0] }}
+            </span>
             <span
               class="email-suggestion"
               v-if="emailSuggestion"
@@ -41,9 +41,9 @@ z<template>
                   type="text"
                   placeholder="姓氏 Last Name"
                 />
-                <span class="en__field__error" v-if="errors.length">{{
-                  errors[0]
-                }}</span>
+                <span class="en__field__error" v-if="errors.length">
+                  {{ errors[0] }}
+                </span>
               </ValidationProvider>
             </div>
 
@@ -57,9 +57,9 @@ z<template>
                   type="text"
                   placeholder="名字 First Name"
                 />
-                <span class="en__field__error" v-if="errors.length">{{
-                  errors[0]
-                }}</span>
+                <span class="en__field__error" v-if="errors.length">
+                  {{ errors[0] }}
+                </span>
               </ValidationProvider>
             </div>
           </div>
@@ -83,9 +83,9 @@ z<template>
                   <option value="852">+852</option>
                   <option value="853">+853</option>
                 </select>
-                <span class="en__field__error" v-if="errors.length">{{
-                  errors[0]
-                }}</span>
+                <span class="en__field__error" v-if="errors.length">
+                  {{ errors[0] }}
+                </span>
               </ValidationProvider>
             </div>
 
@@ -101,9 +101,9 @@ z<template>
                   type="text"
                   placeholder="手提號碼 Mobile Number"
                 />
-                <span class="en__field__error" v-if="errors.length">{{
-                  errors[0]
-                }}</span>
+                <span class="en__field__error" v-if="errors.length">
+                  {{ errors[0] }}
+                </span>
               </ValidationProvider>
             </div>
           </div>
@@ -127,9 +127,9 @@ z<template>
                 >
               </select>
             </div>
-            <span class="en__field__error" v-if="errors.length">{{
-              errors[0]
-            }}</span>
+            <span class="en__field__error" v-if="errors.length">
+              {{ errors[0] }}
+            </span>
           </ValidationProvider>
         </div>
 
@@ -173,26 +173,26 @@ import Mailcheck from "mailcheck";
 
 // definitions
 let phoneRules = {
-  "852": {
+  852: {
     country: "+852",
     code: "+852",
     pattern: "^[2,3,5,6,8,9]{1}[0-9]{7}$",
     help: "Mobile number should be 8 digits and start with 2, 3, 5, 6, 8 or 9",
     maxlength: 8
   },
-  "853": {
+  853: {
     country: "+853",
     code: "+853",
     pattern: "^[6]{1}[0-9]{7}$",
     maxlength: 8
   },
-  "886": {
+  886: {
     country: "+886",
     code: "+886",
     pattern: "^0?[9]{1}[0-9]{8}$",
     maxlength: 9
   },
-  "86": {
+  86: {
     country: "+86",
     code: "+86",
     pattern: "^[1]{1}[0-9]{10}$",
