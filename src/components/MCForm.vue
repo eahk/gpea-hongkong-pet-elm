@@ -3,7 +3,10 @@ z<template>
     <ValidationObserver v-slot="{ invalid, handleSubmit }">
       <form @submit.prevent="handleSubmit(_onSubmit)">
         <div class="en__field--text">
-          <ValidationProvider rules="required|email" v-slot="{ classes, errors }">
+          <ValidationProvider
+            rules="required|email"
+            v-slot="{ classes, errors }"
+          >
             <label for class="en__field__label">電郵地址 Email Address</label>
             <input
               :class="['form-input', classes]"
@@ -12,7 +15,9 @@ z<template>
               type="text"
               placeholder="電郵地址 Email Address"
             />
-            <span class="en__field__error" v-if="errors.length">{{ errors[0] }}</span>
+            <span class="en__field__error" v-if="errors.length">{{
+              errors[0]
+            }}</span>
             <span
               class="email-suggestion"
               v-if="emailSuggestion"
@@ -36,7 +41,9 @@ z<template>
                   type="text"
                   placeholder="姓氏 Last Name"
                 />
-                <span class="en__field__error" v-if="errors.length">{{ errors[0] }}</span>
+                <span class="en__field__error" v-if="errors.length">{{
+                  errors[0]
+                }}</span>
               </ValidationProvider>
             </div>
 
@@ -50,7 +57,9 @@ z<template>
                   type="text"
                   placeholder="名字 First Name"
                 />
-                <span class="en__field__error" v-if="errors.length">{{ errors[0] }}</span>
+                <span class="en__field__error" v-if="errors.length">{{
+                  errors[0]
+                }}</span>
               </ValidationProvider>
             </div>
           </div>
@@ -74,7 +83,9 @@ z<template>
                   <option value="852">+852</option>
                   <option value="853">+853</option>
                 </select>
-                <span class="en__field__error" v-if="errors.length">{{ errors[0] }}</span>
+                <span class="en__field__error" v-if="errors.length">{{
+                  errors[0]
+                }}</span>
               </ValidationProvider>
             </div>
 
@@ -90,7 +101,9 @@ z<template>
                   type="text"
                   placeholder="手提號碼 Mobile Number"
                 />
-                <span class="en__field__error" v-if="errors.length">{{ errors[0] }}</span>
+                <span class="en__field__error" v-if="errors.length">{{
+                  errors[0]
+                }}</span>
               </ValidationProvider>
             </div>
           </div>
@@ -100,16 +113,23 @@ z<template>
           <ValidationProvider rules="required" v-slot="{ classes, errors }">
             <label class="en__field__label">出生年份</label>
             <div class="relative">
-              <select name="Birthdate" v-model="Birthdate" :class="['form-input', classes]">
+              <select
+                name="Birthdate"
+                v-model="Birthdate"
+                :class="['form-input', classes]"
+              >
                 <option value disabled>出生年份</option>
                 <option
                   v-for="year in years"
                   v-bind:value="year + '-01-01'"
                   v-bind:key="year"
-                >{{ year }}</option>
+                  >{{ year }}</option
+                >
               </select>
             </div>
-            <span class="en__field__error" v-if="errors.length">{{ errors[0] }}</span>
+            <span class="en__field__error" v-if="errors.length">{{
+              errors[0]
+            }}</span>
           </ValidationProvider>
         </div>
 
@@ -126,13 +146,17 @@ z<template>
                 class="en__field__input en__field__input--checkbox"
                 v-model="OptIn"
               />
-              <label for="opt-in" class="en__field__label en__field__label--item">
+              <label
+                for="opt-in"
+                class="en__field__label en__field__label--item"
+              >
                 我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！
                 <br />綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考
                 <a
                   href="https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/"
                   target="_blank"
-                >私隱政策</a>。
+                  >私隱政策</a
+                >。
               </label>
             </div>
           </ValidationProvider>
@@ -154,36 +178,36 @@ let phoneRules = {
     code: "+852",
     pattern: "^[2,3,5,6,8,9]{1}[0-9]{7}$",
     help: "Mobile number should be 8 digits and start with 2, 3, 5, 6, 8 or 9",
-    maxlength: 8,
+    maxlength: 8
   },
   853: {
     country: "+853",
     code: "+853",
     pattern: "^[6]{1}[0-9]{7}$",
-    maxlength: 8,
+    maxlength: 8
   },
   886: {
     country: "+886",
     code: "+886",
     pattern: "^0?[9]{1}[0-9]{8}$",
-    maxlength: 9,
+    maxlength: 9
   },
   86: {
     country: "+86",
     code: "+86",
     pattern: "^[1]{1}[0-9]{10}$",
-    maxlength: 11,
-  },
+    maxlength: 11
+  }
 };
 
 extend("email", {
   ...email,
-  message: "請填上有效電郵地址",
+  message: "請填上有效電郵地址"
 });
 
 extend("required", {
   ...required,
-  message: "請填入以上資料",
+  message: "請填入以上資料"
 });
 
 extend("phone-number", {
@@ -196,7 +220,7 @@ extend("phone-number", {
 
     return true;
   },
-  message: "請填上有效手提號碼",
+  message: "請填上有效手提號碼"
 });
 
 // for email correctness
@@ -212,7 +236,7 @@ let domains = [
   "ymail.com",
   "yahoo.com",
   "yahoo.com.tw",
-  "yahoo.com.hk",
+  "yahoo.com.hk"
 ];
 let topLevelDomains = ["com", "net", "org"];
 
@@ -226,11 +250,10 @@ for (var i = nowYear; i > nowYear - 100; i--) {
 export default {
   components: {
     ValidationProvider,
-    ValidationObserver,
+    ValidationObserver
   },
   data: () => ({
     isDD: window.location.href.indexOf("utm_source=dd") >= 0 ? true : false,
-    mobileRequired: true,
     Birthdate: "",
     Email: "",
     FirstName: "",
@@ -239,22 +262,22 @@ export default {
     OptIn: true,
     MobileCountryCode: "852",
     years: selectableYears,
-    emailSuggestion: null,
+    emailSuggestion: null
   }),
   watch: {
-    Email: function (v) {
+    Email: function(v) {
       Mailcheck.run({
         email: v,
         domains: domains, // optional
         topLevelDomains: topLevelDomains, // optional
-        suggested: (suggestion) => {
+        suggested: suggestion => {
           this.emailSuggestion = suggestion.full;
         },
         empty: () => {
           this.emailSuggestion = null;
-        },
+        }
       });
-    },
+    }
   },
   methods: {
     replaceEmailWithSuggestion() {
@@ -262,8 +285,8 @@ export default {
     },
     _onSubmit() {
       this.$emit("onSubmit", this.$data);
-    },
-  },
+    }
+  }
 };
 </script>
 

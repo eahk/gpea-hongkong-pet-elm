@@ -2,6 +2,37 @@
 <html lang="zh" class="no-js">
   <head>
     <script>
+      var dataLayer = (window.dataLayer = window.dataLayer || []);
+      dataLayer.push({
+        gCampaign: "oceans",
+        gBasket: "elm",
+      });
+    </script>
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+      .async-hide {
+        opacity: 0 !important;
+      }
+    </style>
+    <script>
+      (function(a, s, y, n, c, h, i, d, e) {
+        s.className += " " + y;
+        h.start = 1 * new Date();
+        h.end = i = function() {
+          s.className = s.className.replace(RegExp(" ?" + y), "");
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function() {
+          i();
+          h.end = null;
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, "async-hide", "dataLayer", 4000, {
+        "GTM-M6LZL75": true,
+      });
+    </script>
+    <!-- Anti-flicker snippet (recommended)  -->
+    <script>
       (function(w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -13,11 +44,6 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-M6LZL75");
     </script>
-    <style>
-      .async-hide {
-        opacity: 0 !important;
-      }
-    </style>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />

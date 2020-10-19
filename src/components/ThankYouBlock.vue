@@ -4,20 +4,29 @@
       <strong>感謝您加入聯署！</strong>
     </p>
     <p>您願意進一步行動，捐助支持守護大嶼項目嗎？</p>
-    <p>在守護香港海洋生態的路上，我們需要您即時行動，幫助揭露政府有地不用，執意破壞具生態價值的海洋；您可以協助我們，展開棕地的調查、研究和行動，合力阻截不負責任的政府，強推的「明日大嶼」！懇請您進一步捐助守護！</p>
+    <p>
+      在守護香港海洋生態的路上，我們需要您即時行動，幫助揭露政府有地不用，執意破壞具生態價值的海洋；您可以協助我們，展開棕地的調查、研究和行動，合力阻截不負責任的政府，強推的「明日大嶼」！懇請您進一步捐助守護！
+    </p>
     <p class="actions">
       <a
         class="action-button button--support ty-page-donation-link"
         href="https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK&campaign=countrypark&ref=2019-elm-thankyou_page"
         target="_blank"
-      >支持我們</a>
-    </p>
-    <p class="actions">
-      <a class="action-button button--share" href="#" target="_blank" @click="mainShare">分享出去</a>
+        >支持我們</a
+      >
     </p>
     <p class="actions">
       <a
-        class="action-button button--whatsappshare"
+        class="share-button share-button__main action-button button--share"
+        href="#"
+        target="_blank"
+        @click="mainShare"
+        >分享出去</a
+      >
+    </p>
+    <p class="actions">
+      <a
+        class="share-button share-button__whatsapp action-button button--whatsappshare"
         href="#"
         target="_blank"
         @click="whatsAppShare"
@@ -36,13 +45,13 @@ import { mainShare, whatsAppShare } from "@/share.js";
 
 export default {
   name: "ThankYouBlock",
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {
     mainShare,
-    whatsAppShare,
-  },
+    whatsAppShare
+  }
 };
 </script>
 
