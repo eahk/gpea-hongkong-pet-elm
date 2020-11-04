@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import * as mcHelper from "@/mc.form-helper.js"
+import * as mcHelper from "@/mc.form-helper.js";
 
 Vue.use(Vuex);
 
@@ -34,11 +34,14 @@ export default new Vuex.Store({
   },
   actions: {
     GET_PROGRESS: async context => {
-      const {numSignupTarget, numSignup} = mcHelper.getNumSignupsAndTarget()
+      let { numSignupTarget, numSignup } = mcHelper.getNumSignupsAndTarget();
+
+      // data migration
+      numSignup += 116006;
 
       context.commit("SET_PROGRESS", {
         participants: numSignup,
-        goal: numSignupTarget || 150000
+        goal: numSignupTarget < 150000 ? 150000 : numSignupTarget
       });
     }
   }
