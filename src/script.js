@@ -12,11 +12,11 @@ const debounce = require("lodash.debounce");
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 
-import MCForm from "./components/MCForm.vue"
-import ThankYouBlock from "./components/ThankYouBlock.vue"
-import FullLoadingPage from "./components/FullLoadingPage.vue"
+import MCForm from "./components/MCForm.vue";
+import ThankYouBlock from "./components/ThankYouBlock.vue";
+import FullLoadingPage from "./components/FullLoadingPage.vue";
 
-import * as mcHelper from "@/mc.form-helper.js"
+import * as mcHelper from "@/mc.form-helper.js";
 
 export default {
   components: {
@@ -86,6 +86,11 @@ export default {
       this.PageFn.isWaitingInit = true;
       this.handleResize();
       this.PageFn.isWaitingInit = false;
+      //
+      if (window.location.search.includes("paragliding")) {
+        document.querySelector(".bg-img").style.backgroundImage =
+          "url('https://storage.googleapis.com/planet4-hongkong-stateless/2020/11/e83df40a-dji_0220_16x9.jpg')";
+      }
     },
     openPetitionFullSection() {
       if (this.PageFn.isMobile && !this.showMobileForm) {
@@ -101,43 +106,41 @@ export default {
     },
     _onSubmit(formDataObj) {
       try {
-        this.PageFn.isLoading = true
-
+        this.PageFn.isLoading = true;
         // prepare the submit data
-        let postData = mcHelper.fetchFormInputs("#mc-form")
+        let postData = mcHelper.fetchFormInputs("#mc-form");
         for (let k in formDataObj) {
           if (k in postData) {
-            postData[k] = formDataObj[k]
+            postData[k] = formDataObj[k];
           }
         }
-
         fetch(mcHelper.getPostURL(), {
-          method: 'POST',
+          method: "POST",
           body: Object.keys(postData).reduce((formData, k) => {
             formData.append(k, postData[k]);
             return formData;
           }, new FormData())
         })
-        .then(response => response.json())
-        .then(response => {
-          this.PageFn.isLoading = false
+          .then(response => response.json())
+          .then(response => {
+            this.PageFn.isLoading = false;
 
-          if (response.Supporter) { // ok, go to next page
-            mcHelper.sendPetitionTracking("2020-elm")
-            this.formSubmitted = true
-            document.querySelector(".enform").scrollIntoView();
-          } else {
-            console.error(response)
-          }
-        })
-        .catch(error => {
-          this.PageFn.isLoading = false // something wrong
-          alert(error)
-          console.error(error)
-        })
-
+            if (response.Supporter) {
+              // ok, go to next page
+              mcHelper.sendPetitionTracking("2020-elm");
+              this.formSubmitted = true;
+              document.querySelector(".enform").scrollIntoView();
+            } else {
+              console.error(response);
+            }
+          })
+          .catch(error => {
+            this.PageFn.isLoading = false; // something wrong
+            alert(error);
+            console.error(error);
+          });
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
     }
   },
