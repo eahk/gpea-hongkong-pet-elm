@@ -13,24 +13,11 @@ const router = new Router({
       props: { theme: "eco" }
     },
     {
-      path: "/mermaid",
-      name: "mermaid",
-      component: Home,
-      props: { theme: "eco" }
-    },
-    {
       path: "/ecology",
       name: "ecology",
       component: Home,
       props: { theme: "eco" }
     }
-    /*
-    {
-      path: '/legcotest',
-      name: 'legcotest',
-      component: Legco,
-    },
-    */
   ]
 });
 

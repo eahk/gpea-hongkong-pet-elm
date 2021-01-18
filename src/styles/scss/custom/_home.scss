@@ -156,19 +156,26 @@
 .hero__animals {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   @media (min-width: 1200px) {
     width: 50%;
+    margin-top: 20px;
   }
-}
-
-.animal-wrapper {
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  img {
-    width: 100%;
+  .animal-wrapper {
+    max-width: 300px;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    &:first-child {
+      transform: translateX(-5%);
+    }
+    &:last-child {
+      transform: translateX(10%);
+    }
   }
 }
 

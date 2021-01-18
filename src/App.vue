@@ -46,7 +46,7 @@
           <div class="enform-container z-depth-1">
             <div class="enform__header" v-if="!formSubmitted">
               <h2 class="font-weight--bold">守護香港未來</h2>
-              <p>一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！我們會將你守護大嶼的聲音，向政府反映。</p>
+              <p>我們需要大家的力量，一同發聲，促請政府優先發展棕地，放棄不負責任的「明日大嶼」填海計劃！</p>
             </div>
             <div class="enform__wrapper">
               <MCForm v-if="!formSubmitted" @onSubmit="_onSubmit"/>

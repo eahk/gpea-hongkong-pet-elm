@@ -13,7 +13,7 @@
           href="https://act.greenpeace.org/page/4663/donate/1?campaign=countrypark&ref=elm-footer"
         >捐助支持</a>
       </div>
-      <p class="logo-box">© GREENPEACE 2020</p>
+      <p class="logo-box">© GREENPEACE 2021</p>
     </div>
   </footer>
 </template>
