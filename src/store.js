@@ -36,12 +36,9 @@ export default new Vuex.Store({
     GET_PROGRESS: async context => {
       let { numSignupTarget, numSignup } = mcHelper.getNumSignupsAndTarget();
 
-      // data migration
-      numSignup += 116006;
-
       context.commit("SET_PROGRESS", {
         participants: numSignup,
-        goal: numSignupTarget < 150000 ? 150000 : numSignupTarget
+        goal: numSignupTarget < 200000 ? 200000 : numSignupTarget
       });
     }
   }

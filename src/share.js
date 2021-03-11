@@ -5,8 +5,7 @@ const mainShare = event => {
   //
   const fbShare = () => {
     var baseURL = "https://www.facebook.com/sharer/sharer.php";
-    var u =
-      "https://cloud.greenhk.greenpeace.org/petition-oceans-elm?utm_campaign=elm&utm_source=facebook&utm_medium=social&utm_content=main_share#/";
+    var u = "https://act.gp/3ck2hkS";
     var t = (window.innerHeight - 436) / 2;
     var l = (window.innerWidth - 626) / 2;
     window.open(

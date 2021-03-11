@@ -37,7 +37,7 @@ let buildFolder = path.join(__dirname, "build"),
   DonationPageUrl = "https://www.greenpeace.org/eastasia/", // not used now
   interests = ["Oceans"], // Arctic, Climate, Forest, Health, Oceans, Plastics
   ftpConfigName = "ftp_hk", // refer to ~/.npm-en-uploader-secret
-  ftpRemoteDir = "/2020/petition/zh-hk.2019.general.elm.general.signup.na.mc";
+  ftpRemoteDir = "/2021/elm";
 
 let indexHtmlFilePath = path.join(buildFolder, "index.html");
 let fbuf = fs.readFileSync(indexHtmlFilePath);
@@ -80,7 +80,7 @@ const upload_folder = function(settings, localDir) {
 };
 
 // patch form contents
-let formTmpl = `<form method="post" action="%%=v(@EndpointURL)=%%" class="" id="mc-form">
+let formTmpl = `<form method="post" action="%%=v(@EndpointURL)=%%" class="" id="mc-form" style="display: none;">
       <input placeholder="FirstName" name="FirstName" type="text" value="">
       <input placeholder="LastName" name="LastName" type="text" value="">
       <input placeholder="Email" name="Email" type="email" value="">
@@ -157,9 +157,11 @@ let headersTmpl = `%%[
 
     /**** Retreive number of responses in campaign used for any petition where petition sign up progress bar is needed to display signups compared to targeted number of signups ****/
     SET @Rows = LookupRows("ENT.Campaign_Salesforce","Id", @CampaignId)
-    IF RowCount(@CampaignRows) > 0 THEN
+    IF RowCount(@Rows) > 0 THEN
       SET @CampaignRow = Row(@Rows, 1)
-      SET @NumberOfResponses = Field(@CampaignRow, "NumberOfResponses")
+      SET @NumberOfContacts = Field(@CampaignRow, "NumberOfContacts")
+      SET @NumberOfLeads = Field(@CampaignRow, "NumberOfLeads")
+      SET @NumberOfResponses = ADD(@NumberOfContacts, @NumberOfLeads)
       SET @Petition_Signup_Target__c = Field(@CampaignRow, "Petition_Signup_Target__c")
     ENDIF
 
