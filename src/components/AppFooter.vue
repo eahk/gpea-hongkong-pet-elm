@@ -3,17 +3,17 @@
     <div class="container">
       <p class="footer-text">
         <span>綠色和平存在，因為脆弱的地球需要改變、需要行動。</span>
-        <br>
+        <br />
         <span>但保護地球的使命不能僅靠綠色和平來完成，唯有結合你的力量，才能夠讓地球變得更綠色、更和平。</span>
       </p>
       <div class="footer-list">
-        <a href="http://www.greenpeace.org/hk/">首頁</a>
-        <a href="http://www.greenpeace.org/hk/about/privacy/" title="私隱政策與個人資料收集聲明">私隱政策與個人資料收集聲明</a>
+        <a href="https://greenpeace.org/hongkong" target="_blank">首頁</a>
+        <a href="https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/" title="私隱政策與個人資料收集聲明">私隱政策與個人資料收集聲明</a>
         <a
-          href="https://act.greenpeace.org/page/4663/donate/1?campaign=countrypark&ref=elm-footer"
+          href="https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK&campaign=countrypark&ref=elm-footer"
         >捐助支持</a>
       </div>
-      <p class="logo-box">© GREENPEACE 2019</p>
+      <p class="logo-box">© GREENPEACE {{new Date().getFullYear()}}</p>
     </div>
   </footer>
 </template>

@@ -95,9 +95,6 @@
     .enform__login {
       display: block;
     }
-    .en__submit {
-      padding-bottom: 60px;
-    }
     .en__field--email-ok-hongkong {
       opacity: 1;
       transform: translate3d(0, 0, 0);
@@ -229,6 +226,10 @@
       padding: 0 5px;
       border: 1px solid #ddd;
       border-radius: 4px;
+
+      &.invalid {
+        border-color: #ff6666;
+      }
     }
   }
   .en__field__input--select {
@@ -250,7 +251,8 @@
 .enform {
   .en__submit {
     margin-top: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 20px;
+
     button {
       letter-spacing: 4px;
       font-size: 20px;
@@ -299,67 +301,6 @@
     }
   }
 }
-
-.enform {
-  .en__field--email-ok-hongkong {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    bottom: 0;
-    margin: 0;
-    padding: 0 4px;
-    z-index: 1;
-    .en__field__label {
-      display: none;
-    }
-    .en__field__item {
-      [type='checkbox'] {
-        &:checked,
-        &:not(:checked) {
-          position: absolute;
-          left: -9999px;
-        }
-        &:checked + label,
-        &:not(:checked) + label {
-          position: relative;
-          padding-left: 18px;
-          font-size: 10px;
-          color: #6f6f6f;
-          cursor: pointer;
-          display: inline-block;
-          font-weight: 300;
-          &:before,
-          &:after {
-            content: '';
-            position: absolute;
-            left: 0px;
-            top: 1px;
-            width: 13px;
-            height: 13px;
-          }
-          &:before {
-            border: 1px solid #ddd;
-            background: #fff;
-          }
-          &:after {
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAQAAABuW59YAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAB2SURBVHjaAGkAlv8A3QDyAP0A/QD+Dam3W+kCAAD8APYAAgTVZaZCGwwA5wr0AvcA+Dh+7UX/x24AqK3Wg/8nt6w4/5q71wAAVP9g/7rTXf9n/+9N+AAAtpJa/zf/S//DhP8H/wAA4gzWj2P4lsf0JP0A/wADAHB0Ngka6UmKAAAAAElFTkSuQmCC');
-            background-repeat: no-repeat;
-            background-position: center;
-            transition: opacity 0.2s;
-            transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-          }
-        }
-        &:not(:checked) + label:after {
-          opacity: 0;
-        }
-        &:checked + label:after {
-          opacity: 0.8;
-        }
-      }
-    }
-  }
-}
-
 /* end of form field styles */
 
 /* error Message */
@@ -372,11 +313,9 @@
   }
   .en__field__error {
     font-size: 10px;
-    font-weight: 300;
     color: #ff6666;
-    position: absolute;
-    left: 0;
-    bottom: -16px;
+    display: inline-block;
+
   }
   .eaErrorMessage {
     text-align: left;

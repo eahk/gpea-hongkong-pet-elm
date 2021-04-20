@@ -5,15 +5,10 @@ import Home from "@/views/Home.vue";
 Vue.use(Router);
 
 const router = new Router({
+  mode: "history",
   routes: [
     {
       path: "*",
-      component: Home,
-      props: { theme: "eco" }
-    },
-    {
-      path: "/mermaid",
-      name: "mermaid",
       component: Home,
       props: { theme: "eco" }
     },
@@ -23,13 +18,6 @@ const router = new Router({
       component: Home,
       props: { theme: "eco" }
     }
-    /*
-    {
-      path: '/legcotest',
-      name: 'legcotest',
-      component: Legco,
-    },
-    */
   ]
 });
 

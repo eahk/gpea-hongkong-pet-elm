@@ -5,8 +5,7 @@ const mainShare = event => {
   //
   const fbShare = () => {
     var baseURL = "https://www.facebook.com/sharer/sharer.php";
-    var u =
-      "https://act.greenpeace.org/page/40590/petition/1?utm_campaign=2020-elm&utm_source=facebook&utm_medium=social&utm_content=main_share#/";
+    var u = "https://act.gp/3ck2hkS";
     var t = (window.innerHeight - 436) / 2;
     var l = (window.innerWidth - 626) / 2;
     window.open(
@@ -22,7 +21,7 @@ const mainShare = event => {
         title: "",
         text:
           "海洋住屋不對立，為了珍貴脆弱的香港海洋生態，及讓市民安居樂業，一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！👉 ",
-        url: "https://act.gp/2VD8bGF"
+        url: "https://act.gp/38bpvc8"
       })
       .then()
       .catch();
@@ -34,6 +33,6 @@ const mainShare = event => {
 const whatsAppShare = event => {
   event.preventDefault();
   var w =
-    "https://api.whatsapp.com/send?text=海洋住屋不對立，為了珍貴脆弱的香港海洋生態，及讓市民安居樂業，一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！👉 https://act.gp/2KCo7Cx";
+    "https://api.whatsapp.com/send?text=海洋住屋不對立，為了珍貴脆弱的香港海洋生態，及讓市民安居樂業，一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！👉 https://act.gp/2JN5EXm";
   window.open(w);
 };

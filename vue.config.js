@@ -1,20 +1,48 @@
-// vue.config.js
 module.exports = {
   publicPath:
     process.env.NODE_ENV === "production"
-      ? "https://api.greenpeace.org.hk/2020/elm/"
+      ? "https://api.greenpeace.org.hk/2021/elm"
       : "/",
-  filenameHashing: false,
   css: {
     loaderOptions: {
-      // by default the `sass` option will apply to both syntaxes
-      // because `scss` syntax is also processed by sass-loader underlyingly
-      // but when configuring the `data` option
-      // `scss` syntax requires an semicolon at the end of a statement, while `sass` syntax requires none
-      // in that case, we can target the `scss` syntax separately using the `scss` option
       scss: {
         prependData: `@import "~@/styles/scss/global.scss";`
       }
     }
+  },
+  outputDir: "build",
+  assetsDir: "static",
+  filenameHashing: true,
+  /*
+  configureWebpack: {
+    plugins:
+      process.env.NODE_ENV === "production"
+        ? [
+            new PrerenderSPAPlugin({
+              staticDir: path.join(__dirname, "build"),
+              routes: ["/"],
+              postProcess(renderedRoute) {
+                renderedRoute.html = renderedRoute.html.replace(
+                  /<script (.*?)>/g,
+                  `<script $1 defer>`
+                );
+                renderedRoute.html = renderedRoute.html.replace(
+                  /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+                  ""
+                );
+                const bodyEnd = renderedRoute.html.indexOf("</body>");
+                renderedRoute.html =
+                  renderedRoute.html.substr(0, bodyEnd) +
+                  extraScripts +
+                  renderedRoute.html.substr(bodyEnd);
+                return renderedRoute;
+              }
+            })
+          ]
+        : []
+  },
+  */
+  devServer: {
+    disableHostCheck: true
   }
 };

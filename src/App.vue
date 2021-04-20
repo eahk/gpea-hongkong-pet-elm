@@ -3,8 +3,8 @@
     <div class="main-inner">
       <!-- loading -->
       <fade-transition :duration="400">
-        <div class="main-loading" v-if="PageFn.isLoading || isResizing">
-          <img src="@/assets/img/gp-logo-vertical.png" v-bind:class="{loading: PageFn.isLoading}" />
+        <div class="main-loading" v-if="PageFn.isWaitingInit || isResizing">
+          <img src="@/assets/img/gp-logo-vertical.png" v-bind:class="{loading: PageFn.isWaitingInit}" />
         </div>
       </fade-transition>
       <!-- header -->
@@ -44,11 +44,14 @@
           </div>
 
           <div class="enform-container z-depth-1">
-            <div class="enform__header">
+            <div class="enform__header" v-if="!formSubmitted">
               <h2 class="font-weight--bold">守護香港未來</h2>
-              <p>一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！我們會將你守護大嶼的聲音，向政府反映。</p>
+              <p>我們需要大家的力量，一同發聲，促請政府優先發展棕地，放棄不負責任的「明日大嶼」填海計劃！</p>
             </div>
-            <div class="enform__wrapper"></div>
+            <div class="enform__wrapper">
+              <MCForm v-if="!formSubmitted" @onSubmit="_onSubmit"/>
+              <ThankYouBlock v-if="formSubmitted"/>
+            </div>
           </div>
         </section>
       </slide-x-right-transition>
@@ -76,6 +79,8 @@
       </button>
     </div>
     <!-- end of mobile sign -->
+
+    <FullLoadingPage :isActive="PageFn.isLoading"/>
   </main>
 </template>
 <script src="./script.js">

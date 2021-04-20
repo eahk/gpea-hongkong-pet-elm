@@ -27,15 +27,12 @@ Vue.use(ProgressPlugin);
 import "normalize.css/normalize.css";
 import "nprogress/nprogress.css";
 import "animate.css/animate.min.css";
-// Bootstrap
-import "@/styles/scss/custom.scss";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-// Main
 import "@/styles/scss/main.scss";
 //
 Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  mounted: () => document.dispatchEvent(new Event("x-app-rendered"))
 }).$mount("#app");
