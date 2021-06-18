@@ -1,8 +1,8 @@
 // Then import Bootstrap an BootstrapVue SCSS files (order is important)
-@import "node_modules/bootstrap/scss/bootstrap.scss";
-@import "node_modules/bootstrap-vue/src/index.scss";
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
 // custom
-@import "nojs", "mixins", "base", "typography", "en/enform";
+@import 'nojs', 'mixins', 'base', 'typography', 'en/enform';
 
 #mc-form {
   display: none;
@@ -151,7 +151,7 @@ body {
   }
 
   .en__field--email-ok-hongkong {
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       -webkit-appearance: checkbox !important;
       -moz-appearance: checkbox !important;
       -ms-appearance: checkbox !important;
@@ -320,16 +320,14 @@ body {
       transform: translateY(-4px);
     }
   }
-
   &.expand {
     padding: 8px 16px;
     background-color: #fff;
   }
-
   &.collapse {
-    height: 20px;
+    display: flex;
+    height: 28px;
     background-color: #ddd;
-
     button {
       padding: 0;
       background-color: transparent;
