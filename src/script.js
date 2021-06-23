@@ -114,6 +114,10 @@ export default {
             postData[k] = formDataObj[k];
           }
         }
+        // prepare dict campaign data
+        let dict = {};
+        dict["CampaignData5__c"] = window.location.href;
+        postData["CampaignData5__c"] = dict["CampaignData5__c"];
         fetch(mcHelper.getPostURL(), {
           method: "POST",
           body: Object.keys(postData).reduce((formData, k) => {
