@@ -1,16 +1,14 @@
 <template>
   <div class="thankyou">
-    <p>
-      <strong>感謝您加入聯署！</strong>
-    </p>
-    <p>您願意進一步行動，捐助支持守護大嶼項目嗎？</p>
-    <p>
-      在守護香港海洋生態的路上，我們需要您即時行動，幫助揭露政府有地不用，執意破壞具生態價值的海洋；您可以協助我們，展開棕地的調查、研究和行動，合力阻截不負責任的政府，強推的「明日大嶼」！懇請您進一步捐助守護！
+    <h2>
+      <strong>感謝您為香港自然環境發聲！</strong>
+    </h2>
+    <p>多年來，綠色和平致力保護香港綠野、大海，以城市與自然環境和諧共存為目標，在推動環境工作愈見困難的此刻，我們仍堅持不接受政商界支持。<strong>請即以每日約$3小額捐助，支持綠色和平持續調查棕地亂象，以事實證明自然與住屋不對立，一起守護珍貴環境！</strong>
     </p>
     <p class="actions">
       <a
         class="action-button button--support ty-page-donation-link"
-        href="https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK&campaign=countrypark&ref=2019-elm-thankyou_page"
+        href="https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=countrypark&ref=elm-thankyou_page"
         target="_blank"
         >支持我們</a
       >
@@ -57,11 +55,11 @@ export default {
 
 <style lang="scss">
 .thankyou {
-  strong {
-    font-size: 22px;
+  h2 {
+    font-size: 24px;
   }
   p {
-    line-height: 1.42857;
+    line-height: 1.5;
     margin-bottom: 20px;
   }
 }
