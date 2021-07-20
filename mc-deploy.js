@@ -32,7 +32,7 @@ const FTPS = require("ftps");
 
 // definitions
 let buildFolder = path.join(__dirname, "build"),
-  EndpointURL = "https://cloud.greenhk.greenpeace.org/petition-pp",
+  EndpointURL = "https://cloud.greenhk.greenpeace.org/websign",
   CampaignId = "7012u000000Otu3AAC",
   DonationPageUrl = "https://www.greenpeace.org/eastasia/", // not used now
   interests = ["Oceans"], // Arctic, Climate, Forest, Health, Oceans, Plastics
