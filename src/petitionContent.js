@@ -28,7 +28,7 @@ let pageContent = {
         ],
         sectionImg: require("@/assets/img/DJI_0431.jpg"),
         sectionAlt: "",
-        sectionText: `<div class="text-flexbox"><div class ="box"><p><strong>填海選址鄰近海域具生態價值</strong>，或令海洋或陸地物種的棲息地永久喪失。</p></div><div class="box"><p>我們與6個環保及關注團體發佈的生態調查發現，鄰近填海選址的周公島，具國家二級保護野生動物白腹海鵰的鳥巢，全球獨有的鮑氏雙足蜥，更在中部水域錄得一種稀有的軟珊瑚海筆，<strong>生態價值絕不應被刻意低估</strong>。</p></div></div>`,
+        sectionText: `<div class="text-flexbox"><div class ="box"><p><strong>填海選址鄰近海域具生態價值</strong>，或令海洋或陸地物種的棲息地永久喪失。</p></div><div class="box"><p>我們與6個環保及關注團體發佈的生態調查發現，鄰近填海選址的周公島，具國家一級保護野生動物白腹海鵰的鳥巢，全球獨有的鮑氏雙足蜥，更在中部水域錄得一種稀有的軟珊瑚海筆，<strong>生態價值絕不應被刻意低估</strong>。</p></div></div>`,
         subImg: require("@/assets/img/hk-brownfield.jpg")
       },
       {
