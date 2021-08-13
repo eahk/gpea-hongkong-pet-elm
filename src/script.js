@@ -114,6 +114,10 @@ export default {
             postData[k] = formDataObj[k];
           }
         }
+        // prepare dict campaign data
+        let dict = {};
+        dict["CampaignData5__c"] = window.location.href;
+        postData["CampaignData5__c"] = dict["CampaignData5__c"];
         fetch(mcHelper.getPostURL(), {
           method: "POST",
           body: Object.keys(postData).reduce((formData, k) => {
@@ -124,12 +128,14 @@ export default {
           .then(response => response.json())
           .then(response => {
             this.PageFn.isLoading = false;
-
-            if (response.Supporter) {
-              // ok, go to next page
-              mcHelper.sendPetitionTracking("elm");
-              this.formSubmitted = true;
-              document.querySelector(".enform").scrollIntoView();
+            if (response) {
+              if (response.Supporter) {
+                if (response.Supporter) {
+                  mcHelper.sendPetitionTracking("elm");
+                  this.formSubmitted = true;
+                  document.querySelector(".enform").scrollIntoView();
+                }
+              }
             } else {
               console.error(response);
             }

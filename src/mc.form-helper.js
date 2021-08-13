@@ -3,51 +3,59 @@
  * @param  {DOM or string} form Native js Element (not in jquery form)
  * @return {Object} {name:value, ...}
  */
-export const fetchFormInputs = (form) => {
-	if (typeof form === 'string' || form instanceof String) {
-		form = document.querySelector(form)
-	}
+export const fetchFormInputs = form => {
+  if (typeof form === "string" || form instanceof String) {
+    form = document.querySelector(form);
+  }
 
-	let obj = {}
-	form.querySelectorAll("input").forEach(function (el) {
-		let v = null
+  let obj = {};
+  form.querySelectorAll("input").forEach(function(el) {
+    let v = null;
 
-		if (el.type==="checkbox") {
-			v = el.checked
-		} else {
-			v = el.value
-		}
+    if (el.type === "checkbox") {
+      v = el.checked;
+    } else {
+      v = el.value;
+    }
 
-		obj[el.name] = v
-	})
-	form.querySelectorAll("select").forEach(function (el) {
-		obj[el.name] = el.options[el.selectedIndex].value
-	})
+    obj[el.name] = v;
+  });
+  form.querySelectorAll("select").forEach(function(el) {
+    obj[el.name] = el.options[el.selectedIndex].value;
+  });
 
-	return obj
-}
+  return obj;
+};
 
 /**
  * Retrieve the form POST URL
  * @return {string} URL
  */
 export const getPostURL = () => {
-	return document.querySelector("#mc-form").action
-}
+  return document.querySelector("#mc-form").action;
+};
 
 /**
  * Retrieve the current number of supporters and signup targets
  * @return {object} {numSignup:int, numSignupTarget:int}
  */
 export const getNumSignupsAndTarget = () => {
-	var numSignupTarget = parseInt(document.querySelector('input[name="numSignupTarget"]').value, 10) || 0,
-		numResponses = parseInt(document.querySelector('input[name="numResponses"]').value, 10) || 0
+  var numSignupTarget =
+      parseInt(
+        document.querySelector('input[name="numSignupTarget"]').value,
+        10
+      ) || 0,
+    numResponses =
+      parseInt(
+        document.querySelector('input[name="numResponses"]').value,
+        10
+      ) || 0;
 
-	return {
-		numSignupTarget,
-		numSignup: numResponses
-	}
-}
+  return {
+    numSignupTarget,
+    numSignup: numResponses
+  };
+};
 
 /**
  * Display the full loading screen
@@ -122,28 +130,32 @@ export const getNumSignupsAndTarget = () => {
 }
  */
 export const showFullPageLoading = () => {
-	if ( !document.querySelector("#page-loading")) {
-		document.querySelector("body").insertAdjacentHTML('beforeend', `
+  if (!document.querySelector("#page-loading")) {
+    document.querySelector("body").insertAdjacentHTML(
+      "beforeend",
+      `
 			<div id="page-loading" class="hide">
 				<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-			</div>`);
-	}
+			</div>`
+    );
+  }
 
-	setTimeout(() => { // to enable the transition
-		document.querySelector("#page-loading").classList.remove("hide")
-	}, 0)
-}
+  setTimeout(() => {
+    // to enable the transition
+    document.querySelector("#page-loading").classList.remove("hide");
+  }, 0);
+};
 
 /**
  * Hide the full page loading
  */
 export const hideFullPageLoading = () => {
-	document.querySelector("#page-loading").classList.add("hide")
+  document.querySelector("#page-loading").classList.add("hide");
 
-	setTimeout(() => {
-		document.querySelector("#page-loading").remove()
-	}, 1100)
-}
+  setTimeout(() => {
+    document.querySelector("#page-loading").remove();
+  }, 1100);
+};
 
 /**
  * Send the tracking event to the ga
@@ -152,22 +164,22 @@ export const hideFullPageLoading = () => {
  * @return {[type]}            [description]
  */
 export const sendPetitionTracking = (eventLabel, eventValue) => {
-	window.dataLayer = window.dataLayer || [];
+  window.dataLayer = window.dataLayer || [];
 
-	window.dataLayer.push({
-			'event': 'gaEvent',
-			'eventCategory': 'petitions',
-			'eventAction': 'signup',
-			'eventLabel': eventLabel,
-			'eventValue' : eventValue
-	});
+  window.dataLayer.push({
+    event: "gaEvent",
+    eventCategory: "petitions",
+    eventAction: "signup",
+    eventLabel: eventLabel,
+    eventValue: eventValue
+  });
 
-	window.dataLayer.push({
-			'event': 'fbqEvent',
-			'contentName': eventLabel,
-			'contentCategory': 'Petition Signup'
-	});
-}
+  window.dataLayer.push({
+    event: "fbqEvent",
+    contentName: eventLabel,
+    contentCategory: "Petition Signup"
+  });
+};
 
 /**
  * We provide two helper class to quickly switch the block show/hide
@@ -177,25 +189,22 @@ export const sendPetitionTracking = (eventLabel, eventValue) => {
  * The dd page should have url like this: xxx?utm_source=dd
  */
 (() => {
-	if (window.location.href.indexOf("utm_source=dd")>=0) {
-		let style = document.createElement('style');
-		style.innerHTML =
-			`.is-hidden-at-dd-page-only {
+  if (window.location.href.indexOf("utm_source=dd") >= 0) {
+    let style = document.createElement("style");
+    style.innerHTML = `.is-hidden-at-dd-page-only {
 				display: none !important;
 			}
 			.is-shown-at-dd-page-only {
 				display: block !important;
-			}`
-		;
-		document.head.appendChild(style);
-	} else { // not in the dd page
-		let style = document.createElement('style');
-		style.innerHTML =
-			`
+			}`;
+    document.head.appendChild(style);
+  } else {
+    // not in the dd page
+    let style = document.createElement("style");
+    style.innerHTML = `
 			.is-shown-at-dd-page-only {
 				display: none !important;
-			}`
-		;
-		document.head.appendChild(style);
-	}
-})()
+			}`;
+    document.head.appendChild(style);
+  }
+})();

@@ -64,7 +64,7 @@
     <div
       class="mobile-sign-now"
       v-show="PageFn.isMobile"
-      v-bind:class="{expand: !showMobileForm, collapse: showMobileForm, 'z-depth-1': !showMobileForm}"
+      v-bind:class="{expand: !showMobileForm, collapse: showMobileForm}"
     >
       <div class="scroll-indicator" v-show="!showMobileForm">
         <div class="progress-bar" v-bind:style="{width: `${this.PageFn.scrollDepth}%` }"></div>
