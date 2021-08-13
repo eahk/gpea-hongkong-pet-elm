@@ -128,12 +128,14 @@ export default {
           .then(response => response.json())
           .then(response => {
             this.PageFn.isLoading = false;
-
-            if (response.Supporter) {
-              // ok, go to next page
-              mcHelper.sendPetitionTracking("elm");
-              this.formSubmitted = true;
-              document.querySelector(".enform").scrollIntoView();
+            if (response) {
+              if (response.Supporter) {
+                if (response.Supporter) {
+                  mcHelper.sendPetitionTracking("elm");
+                  this.formSubmitted = true;
+                  document.querySelector(".enform").scrollIntoView();
+                }
+              }
             } else {
               console.error(response);
             }
